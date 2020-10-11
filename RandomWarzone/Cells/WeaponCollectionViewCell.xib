@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="WeaponCollectionViewCellId" id="gTV-IL-0wX" customClass="WeaponCollectionViewCell" customModule="RandomWarzone" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="344" height="182"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="344" height="182"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="xmark.shield" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="z6s-RF-eVL">
+                        <rect key="frame" x="8" y="8.5" width="328" height="165"/>
+                        <color key="backgroundColor" red="0.1221655235" green="0.20694416760000001" blue="0.26527664070000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W9j-QD-fh6">
+                        <rect key="frame" x="16" y="152" width="164" height="18"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="18" id="cYL-HD-H4f"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" red="0.47644352909999999" green="0.54084062580000003" blue="0.57435953620000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dvo-gw-TGT">
+                        <rect key="frame" x="16" y="48" width="197" height="32"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.47644352909999999" green="0.54084062580000003" blue="0.57435953620000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="xep-2R-wIZ">
+                        <rect key="frame" x="216.5" y="16" width="111.5" height="22.5"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="xep-2R-wIZ" secondAttribute="height" multiplier="5:1" id="WGe-0Z-SAY"/>
+                        </constraints>
+                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="pDF-HI-lBf">
+                            <size key="itemSize" width="128" height="128"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                    </collectionView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rex-Eu-6FA">
+                        <rect key="frame" x="16" y="16" width="197" height="32"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="32" id="MKa-uf-6Vu"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                        <color key="textColor" red="0.2842883766" green="0.51602220539999999" blue="0.63289511200000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="z6s-RF-eVL" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="8" id="Dg7-be-9fp"/>
+                <constraint firstItem="xep-2R-wIZ" firstAttribute="trailing" secondItem="z6s-RF-eVL" secondAttribute="trailing" constant="-8" id="Kqo-RL-37t"/>
+                <constraint firstItem="dvo-gw-TGT" firstAttribute="leading" secondItem="Rex-Eu-6FA" secondAttribute="leading" id="PMi-VQ-580"/>
+                <constraint firstAttribute="trailing" secondItem="z6s-RF-eVL" secondAttribute="trailing" constant="8" id="Vrq-n7-3Dc"/>
+                <constraint firstItem="dvo-gw-TGT" firstAttribute="top" secondItem="Rex-Eu-6FA" secondAttribute="bottom" id="YDM-E5-cl0"/>
+                <constraint firstItem="W9j-QD-fh6" firstAttribute="leading" secondItem="z6s-RF-eVL" secondAttribute="leading" constant="8" id="YEC-0E-H2l"/>
+                <constraint firstItem="Rex-Eu-6FA" firstAttribute="top" secondItem="z6s-RF-eVL" secondAttribute="top" constant="8" id="aOw-Yp-miE"/>
+                <constraint firstAttribute="bottom" secondItem="z6s-RF-eVL" secondAttribute="bottom" constant="8" id="awh-WK-b5Y"/>
+                <constraint firstItem="dvo-gw-TGT" firstAttribute="width" secondItem="Rex-Eu-6FA" secondAttribute="width" id="bs3-6x-Mwy"/>
+                <constraint firstItem="W9j-QD-fh6" firstAttribute="bottom" secondItem="z6s-RF-eVL" secondAttribute="bottom" constant="-4" id="buu-P7-Ah6"/>
+                <constraint firstItem="xep-2R-wIZ" firstAttribute="top" secondItem="Rex-Eu-6FA" secondAttribute="top" id="kje-kR-6K0"/>
+                <constraint firstItem="xep-2R-wIZ" firstAttribute="leading" secondItem="Rex-Eu-6FA" secondAttribute="trailing" constant="3.5" id="nUZ-Rh-Tjx"/>
+                <constraint firstItem="dvo-gw-TGT" firstAttribute="height" secondItem="Rex-Eu-6FA" secondAttribute="height" id="rbK-Qg-0pz"/>
+                <constraint firstItem="Rex-Eu-6FA" firstAttribute="width" secondItem="z6s-RF-eVL" secondAttribute="width" multiplier="0.6" id="w0v-XC-Iqg"/>
+                <constraint firstItem="Rex-Eu-6FA" firstAttribute="leading" secondItem="z6s-RF-eVL" secondAttribute="leading" constant="8" id="xUs-X2-trW"/>
+                <constraint firstItem="W9j-QD-fh6" firstAttribute="width" secondItem="z6s-RF-eVL" secondAttribute="width" multiplier="0.5" id="yRA-Tw-GZK"/>
+                <constraint firstItem="z6s-RF-eVL" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="yue-GI-hAg"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <size key="customSize" width="344" height="182"/>
+            <connections>
+                <outlet property="collectionView" destination="xep-2R-wIZ" id="iEF-ud-IYp"/>
+                <outlet property="weaponClass" destination="W9j-QD-fh6" id="uIJ-HT-f0V"/>
+                <outlet property="weaponImageView" destination="z6s-RF-eVL" id="RW6-Pn-OmF"/>
+                <outlet property="weaponLabel" destination="Rex-Eu-6FA" id="ugI-Gp-KyD"/>
+                <outlet property="weaponName" destination="dvo-gw-TGT" id="IGg-1H-cIO"/>
+            </connections>
+            <point key="canvasLocation" x="321.73913043478262" y="111.16071428571428"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="xmark.shield" catalog="system" width="128" height="121"/>
+    </resources>
+</document>
