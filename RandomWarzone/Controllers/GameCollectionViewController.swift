@@ -11,6 +11,10 @@ import UIKit
 private let reuseIdentifier = "Cell"
 
 class GameCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+    
+    
+    var LoadoutClass: Loadout?
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +26,7 @@ class GameCollectionViewController: UICollectionViewController, UICollectionView
         self.collectionView.register(WeaponCollectionViewCell.nib(), forCellWithReuseIdentifier: WeaponCollectionViewCell.identifier)
         self.collectionView.register(PerksCollectionViewCell.nib(), forCellWithReuseIdentifier: PerksCollectionViewCell.identifier)
         self.collectionView.register(LethalCollectionViewCell.nib(), forCellWithReuseIdentifier: LethalCollectionViewCell.identifier)
+        self.collectionView.register(TacticalCollectionViewCell.nib(), forCellWithReuseIdentifier: TacticalCollectionViewCell.identifier)
         
         self.collectionView.contentInset = UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0)
         
@@ -54,51 +59,52 @@ class GameCollectionViewController: UICollectionViewController, UICollectionView
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        
-        if indexPath.item == 0 {
-            // Primary Weapon
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WeaponCollectionViewCell.identifier, for: indexPath) as! WeaponCollectionViewCell
-            cell.weaponLabel.text = "Primary Weapon"
-            cell.weaponName.text = "HDR"
-            cell.weaponClass.text = "Sniper"
-            return cell
-        } else if indexPath.item == 1 {
-            // Secondary Weapon
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WeaponCollectionViewCell.identifier, for: indexPath) as! WeaponCollectionViewCell
-            cell.weaponLabel.text = "Secondary Weapon"
-            cell.weaponName.text = "1911"
-            cell.weaponClass.text = "Handgun"
-            return cell
-            
-        } else if indexPath.item == 2 {
-            // Perks
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PerksCollectionViewCell.identifier, for: indexPath) as! PerksCollectionViewCell
-            
-            return cell
-            
-        } else if indexPath.item == 3 {
-            // Lethal
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: LethalCollectionViewCell.identifier, for: indexPath) as! LethalCollectionViewCell
-            cell.title.text = "Lethal"
-            cell.weapon.text = "Frag Grenade"
-            return cell
-            
+        if let randomLoadoutClass = self.LoadoutClass {
+            if indexPath.item == 0 {
+                // Primary Weapon
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WeaponCollectionViewCell.identifier, for: indexPath) as! WeaponCollectionViewCell
+                
+                cell.configure(with: randomLoadoutClass.primaryWeapon)
+                
+                return cell
+            } else if indexPath.item == 1 {
+                // Secondary Weapon
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WeaponCollectionViewCell.identifier, for: indexPath) as! WeaponCollectionViewCell
+                
+                cell.configure(with: randomLoadoutClass.secondaryWeapon)
+                return cell
+                
+            } else if indexPath.item == 2 {
+                // Perks
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PerksCollectionViewCell.identifier, for: indexPath) as! PerksCollectionViewCell
+                
+                cell.configure(perks: randomLoadoutClass.perks)
+                
+                return cell
+                
+            } else if indexPath.item == 3 {
+                // Lethal
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: LethalCollectionViewCell.identifier, for: indexPath) as! LethalCollectionViewCell
+                cell.configure(lethal: randomLoadoutClass.lethal)
+                return cell
+                
+            } else {
+                // Tactical
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TacticalCollectionViewCell.identifier, for: indexPath) as! TacticalCollectionViewCell
+                cell.configure(tactical: randomLoadoutClass.tactical)
+                return cell
+                
+            }
         } else {
-            // Tactical
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: LethalCollectionViewCell.identifier, for: indexPath) as! LethalCollectionViewCell
-            cell.title.text = "Tactical"
-            cell.weapon.text = "Stun Grenade"
-            return cell
-            
+            return UICollectionViewCell()
         }
-       
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if indexPath.item == 0 || indexPath.item == 1 {
             return CGSize(width: collectionView.frame.width - 16, height: collectionView.frame.height * 0.25)
         } else if indexPath.item == 2 {
-            return CGSize(width: collectionView.frame.width - 16, height: collectionView.frame.height * 0.12)
+            return CGSize(width: collectionView.frame.width - 16, height: collectionView.frame.height * 0.175)
         } else {
             return CGSize(width: collectionView.frame.width - 16, height: collectionView.frame.height * 0.12)
         }

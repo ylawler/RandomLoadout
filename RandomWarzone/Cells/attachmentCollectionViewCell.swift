@@ -21,15 +21,6 @@ class attachmentCollectionViewCell: UICollectionViewCell {
         // Initialization code
     }
     
-//    override func layoutSubviews() {
-//        super.layoutSubviews()
-//        attachmentSelectionImage.layer.masksToBounds = false
-//        attachmentView.layer.cornerRadius = attachmentView.frame.size.height/2
-//        attachmentView.layer.borderColor = selectedColor.cgColor
-//        attachmentView.layer.borderWidth = 2
-//    }
-    
-    
     func configure(hasAttachment: Bool) {
         if hasAttachment {
             // Set selection Image to a filled circle

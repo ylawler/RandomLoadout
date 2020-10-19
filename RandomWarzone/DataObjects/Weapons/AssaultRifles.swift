@@ -9,13 +9,60 @@
 import UIKit
 // ---------------------------------------------------------------------------------------------
 
-
-
-
-
 public struct attachment: Equatable {
     let name: String
-//    let image: String
+}
+
+
+
+class Attachments {
+    
+    var muzzle: [attachment]
+    var barrel: [attachment]
+    var laser: [attachment]
+    var optic: [attachment]
+    var stock: [attachment]
+    var triggerAction: [attachment]
+    var underbarrel: [attachment]
+    var ammunition: [attachment]
+    var rearGrip: [attachment]
+    var perk: [attachment]
+    
+    var allAttachments: [String: [attachment]]
+    
+    init(attachments: attachments) {
+        self.muzzle = attachments.muzzle
+        self.barrel = attachments.barrel
+        self.laser = attachments.laser
+        self.optic = attachments.optic
+        self.stock = attachments.stock
+        self.triggerAction = attachments.triggerAction
+        self.underbarrel = attachments.underbarrel
+        self.ammunition = attachments.ammunition
+        self.rearGrip = attachments.rearGrip
+        self.perk = attachments.perk
+        
+        self.allAttachments = ["Muzzle": self.muzzle,
+                               "Barrel": self.barrel,
+                               "Laser": self.laser,
+                               "Optic": self.optic,
+                               "Stock": self.stock,
+                               "Trigger Action": self.triggerAction,
+                               "Underbarrel": self.underbarrel,
+                               "Ammunition": self.ammunition,
+                               "Rear Grip": self.rearGrip,
+                               "Perk": self.perk]
+        
+    }
+    
+    func getAttachmentKeys() -> [String] {
+        var keys: [String] = []
+        for attachment in self.allAttachments {
+            keys.append(attachment.key)
+        }
+        return keys
+    }
+    
 }
 
 public struct attachments {
@@ -25,12 +72,92 @@ public struct attachments {
     let laser: [attachment]
     let optic: [attachment]
     let stock: [attachment]
+    let triggerAction: [attachment]
     let underbarrel: [attachment]
     let ammunition: [attachment]
     let rearGrip: [attachment]
     let perk: [attachment]
     
-    let allAttachments = ["Muzzle", "Barrel", "Laser", "Optic", "Stock", "Underbarrel", "Ammunition", "Rear Grip", "Perk"]
+    
+    
+    
+    
+//    func getRandomAttachmentKey() -> String {
+//        var attachmentKeyFound: Bool = false
+//        var key: String = "ERROR"
+//
+//        var updatedAllAttachments = self.allAttachments
+//
+//        while attachmentKeyFound == false {
+//            key = updatedAllAttachments[Int.random(in: 0..<updatedAllAttachments.count)]
+//            print("checking key: \(key)")
+//
+//            if key == "Muzzle" {
+//                // check if Muzzle is empty
+//                if self.muzzle != [] {
+//                    attachmentKeyFound = true
+//                } else {
+//                    updatedAllAttachments = self.remove(key: key, from: updatedAllAttachments)
+//                }
+//            } else if key == "Barrel" {
+//               // check if Barrel is empty
+//                if self.barrel != [] {
+//                    attachmentKeyFound = true
+//                }
+//            } else if key == "Laser" {
+//                // check if Laser is empty
+//                if self.laser != [] {
+//                    attachmentKeyFound = true
+//                }
+//            } else if key == "Optic" {
+//                // check if Optic is empty
+//                if self.optic != [] {
+//                    attachmentKeyFound = true
+//                }
+//            } else if key == "Stock" {
+//                // check if Stock is empty
+//                if self.stock != [] {
+//                    attachmentKeyFound = true
+//                }
+//            } else if key == "Trigger Action" {
+//                // check if Trigger Action is empty
+//                if self.triggerAction != [] {
+//                    attachmentKeyFound = true
+//                }
+//            } else if key == "Underbarrel" {
+//                // check if Underbarrel is empty
+//                if self.underbarrel != [] {
+//                    attachmentKeyFound = true
+//                }
+//            } else if key == "Ammunition" {
+//                // check if Ammunition is empty
+//                if self.ammunition != [] {
+//                    attachmentKeyFound = true
+//                }
+//            } else if key == "Rear Grip" {
+//                // check if Rear Grip is empty
+//                if self.rearGrip != [] {
+//                    attachmentKeyFound = true
+//                }
+//            } else if key == "Perk" {
+//               // check if Perk is empty
+//                if self.perk != [] {
+//                    attachmentKeyFound = true
+//                }
+//            }
+//        }
+//
+//        return key
+//
+//    }
+    
+//    func remove(key: String, from: [String]) -> [String] {
+//        var fromArray = from
+//        let idx = fromArray.firstIndex(of: key)!
+//        fromArray.remove(at: idx)
+//        return fromArray
+//    }
+    
     
 }
 
@@ -82,10 +209,6 @@ public let FRSniper = attachment(name: "FR 24.4\" Sniper")
 public let mWLaser_one = attachment(name: "1mW Laser")
 public let tacLaser = attachment(name: "Tac Laser")
 public let mWLaser_five = attachment(name: "5mW Laser")
-
-
-
-
 
 
 // ------------------------------------------- OPTICS ------------------------------------------
@@ -218,109 +341,13 @@ public let presenceOfMind = attachment(name: "Presence of Mind")
 
 
 
-
-
-
-//------------------------------------------ CLASSES --------------------------------------------
-class AssaultRifle {
-    
-    var Attachments: attachments
-    var name: String
-    
-    var existingAttachments: [String: attachment] = [:]
-    
-    init(name: String, attachments: attachments) {
-        self.Attachments = attachments
-        self.name = name
-        setupRandom()
-    }
-    
-    private func setupRandom() {
-        
-        // Get a random number between 1 and 5 -> Determine how many attachments
-        let numberOfRandomAttachments = Int.random(in: 0...5)
-        
-        
-        // For the above number of times, choose a random attachment category
-        print("-------------------------------------------------")
-        print("number of random attachments: \(numberOfRandomAttachments)")
-        if numberOfRandomAttachments == 0 {
-            // No attachments...
-        } else {
-            
-            
-            for i in 1...numberOfRandomAttachments {
-                print("attachment no. : \(i) / \(numberOfRandomAttachments)")
-                if self.existingAttachments != [:] {
-                    // We have an or more existing attachments
-                    var newAttachmentFound = false
-                    var randomAttachmentKey = ""
-                    while newAttachmentFound == false {
-                        randomAttachmentKey = self.Attachments.allAttachments[Int.random(in: 0..<9)]
-                        
-                        if self.existingAttachments.keys.contains(randomAttachmentKey) {
-                            // keep searching
-                        } else {
-                            newAttachmentFound = true
-                        }
-                    }
-                    self.setRandomAttachment(for: randomAttachmentKey)
-                    
-                    
-                } else {
-                    let randomAttachmentKey = self.Attachments.allAttachments[Int.random(in: 0..<9)]
-                    self.setRandomAttachment(for: randomAttachmentKey)
-                }
-            }
-        }
-        
-    }
-    
-    func setRandomAttachment(for key: String) {
-        // For each random category, choose a random attachment
-        var randomAttachment: attachment!
-        
-        if key == "Muzzle" {
-            // get random Muzzle
-            randomAttachment = self.Attachments.muzzle[Int.random(in: 0..<self.Attachments.muzzle.count)]
-        } else if key == "Barrel" {
-            // get random Barrel
-            randomAttachment = self.Attachments.barrel[Int.random(in: 0..<self.Attachments.barrel.count)]
-        } else if key == "Laser" {
-            // get random Barrel
-            randomAttachment = self.Attachments.laser[Int.random(in: 0..<self.Attachments.laser.count)]
-        } else if key == "Optic" {
-            // get random Barrel
-            randomAttachment = self.Attachments.optic[Int.random(in: 0..<self.Attachments.optic.count)]
-        } else if key == "Stock" {
-            // get random Barrel
-            randomAttachment = self.Attachments.stock[Int.random(in: 0..<self.Attachments.stock.count)]
-        } else if key == "Underbarrel" {
-            // get random Barrel
-            randomAttachment = self.Attachments.underbarrel[Int.random(in: 0..<self.Attachments.underbarrel.count)]
-        } else if key == "Ammunition" {
-            // get random Barrel
-            randomAttachment = self.Attachments.ammunition[Int.random(in: 0..<self.Attachments.ammunition.count)]
-        } else if key == "Rear Grip" {
-            // get random Barrel
-            randomAttachment = self.Attachments.rearGrip[Int.random(in: 0..<self.Attachments.rearGrip.count)]
-        } else if key == "Perk" {
-            // get random Barrel
-            randomAttachment = self.Attachments.perk[Int.random(in: 0..<self.Attachments.perk.count)]
-        }
-        print("Setting \(key) attachment to \(randomAttachment.name)\n")
-        self.existingAttachments[key] = randomAttachment
-    }
-
-    
-}
-
 public let m_thirteen_attachments = attachments(muzzle: [tacticalSuppressor, flashGuard,
                                                          muzzleBrake, breacherDevice, lightweightSuppressor, compensator, monolithicSuppressor],
                                                 barrel: [tempusMini, tempusCyclone, tempusMarksman],
                                                 laser: [mWLaser_one, tacLaser, mWLaser_five],
                                                 optic: [solozeroMiniReflex, aimOpReflex, corpCombatHolo, scoutCombat, operatorReflex, flipHybrid, APXHolographic, GIMiniReflex, VLK, cronenMiniReflex, ViperReflex, sniperScope, solozeroNVGEnhanced, monocleReflex, cronenPro, mercThermal, cantedHybrid, PBXHolo, thermalHybrid, integralHybrid, variableZoom],
                                                 stock: [FORGETacStalker, noStock, FSSCloseQuarters, M_one_three_Skeleton],
+                                                triggerAction: [],
                                                 underbarrel: [mercForegrip, MSmokescreen, commandoForegrip, MIncendiary, MFlash, bipod, MHighExplosive, tacticalForegrip, MConcussive, rangerForegrip, MRecon, operatorForegrip, gaugeDeputy],
                                                 ammunition: [fiftyMags, blackoutThirty, sixtyMags],
                                                 rearGrip: [granulated, stippled, rubberized],
@@ -332,6 +359,7 @@ public let kilo_attachments = attachments(muzzle: [tacticalSuppressor, flashGuar
                                           laser: [mWLaser_one, tacLaser, mWLaser_five],
                                           optic: [solozeroMiniReflex, aimOpReflex, corpCombatHolo, scoutCombat, operatorReflex, flipHybrid, APXHolographic, GIMiniReflex, VLK, cronenMiniReflex, ViperReflex, sniperScope, solozeroNVGEnhanced, monocleReflex, cronenPro, mercThermal, cantedHybrid, PBXHolo, thermalHybrid, integralHybrid, variableZoom],
                                           stock: [FORGETacUltralight, noStock, FSSCloseQuarters, singuardArmsSniperPro],
+                                          triggerAction: [],
                                           underbarrel: [mercForegrip, MSmokescreen, commandoForegrip, MIncendiary, MFlash, bipod, MHighExplosive, tacticalForegrip, MConcussive, rangerForegrip, MRecon, operatorForegrip, gaugeDeputy],
                                           ammunition: [fiftyMags, sixtyMags, hundredDrums],
                                           rearGrip: [granulated, stippled, rubberized],
@@ -343,6 +371,7 @@ public let FAL_attachments = attachments(muzzle: [tacticalSuppressor, flashGuard
                                           laser: [mWLaser_one, tacLaser, mWLaser_five],
                                           optic: [solozeroMiniReflex, aimOpReflex, corpCombatHolo, scoutCombat, operatorReflex, flipHybrid, APXHolographic, GIMiniReflex, VLK, cronenMiniReflex, ViperReflex, sniperScope, solozeroNVGEnhanced, monocleReflex, cronenPro, mercThermal, cantedHybrid, PBXHolo, thermalHybrid, integralHybrid, variableZoom],
                                           stock: [FORGETacStalker, noStock, FSSCloseQuarters, factoryAluminium],
+                                          triggerAction: [],
                                           underbarrel: [mercForegrip, MSmokescreen, commandoForegrip, MIncendiary, MFlash, bipod, MHighExplosive, tacticalForegrip, MConcussive, rangerForegrip, MRecon, operatorForegrip, gaugeDeputy],
                                           ammunition: [twentyFourMags, thirtyMags],
                                           rearGrip: [granulated, stippled, rubberized],
@@ -354,6 +383,7 @@ public let m_four_A_one_attachments = attachments(muzzle: [tacticalSuppressor, f
                                          laser: [mWLaser_one, tacLaser, mWLaser_five],
                                          optic: [solozeroMiniReflex, aimOpReflex, corpCombatHolo, scoutCombat, operatorReflex, flipHybrid, APXHolographic, GIMiniReflex, VLK, cronenMiniReflex, ViperReflex, sniperScope, solozeroNVGEnhanced, monocleReflex, cronenPro, mercThermal, cantedHybrid, PBXHolo, thermalHybrid, integralHybrid, variableZoom],
                                          stock: [m_sixteenStock, singuardArmsInvader, noStock, FORGETacCQS],
+                                         triggerAction: [],
                                          underbarrel: [mercForegrip, MSmokescreen, commandoForegrip, MIncendiary, MFlash, bipod, MHighExplosive, tacticalForegrip, MConcussive, rangerForegrip, MRecon, operatorForegrip, gaugeDeputy],
                                          ammunition: [fiftyMags, sixtyMags, para_thirtyTwo, SOCOM_ten],
                                          rearGrip: [granulated, stippled, rubberized],
@@ -366,12 +396,41 @@ public let FR_five_five_six_attachments = attachments(muzzle: [tacticalSuppresso
                                                       laser: [mWLaser_one, tacLaser, mWLaser_five],
                                                       optic: [solozeroMiniReflex, aimOpReflex, corpCombatHolo, scoutCombat, operatorReflex, flipHybrid, APXHolographic, GIMiniReflex, VLK, cronenMiniReflex, ViperReflex, sniperScope, solozeroNVGEnhanced, monocleReflex, cronenPro, mercThermal, cantedHybrid, PBXHolo, thermalHybrid, integralHybrid, variableZoom],
                                                       stock: [FRUltralightHollow, FORGETacBallastPack, FSSTacWrap],
+                                                      triggerAction: [],
                                                       underbarrel: [mercForegrip, MSmokescreen, commandoForegrip, MIncendiary, MFlash, bipod, MHighExplosive, tacticalForegrip, MConcussive, rangerForegrip, MRecon, operatorForegrip, gaugeDeputy],
                                                       ammunition: [fiftyMags, sixtyMags],
                                                       rearGrip: [granulated, stippled, rubberized],
                                                       perk: [heavyHitter, frangibleWounding, fullyLoaded, sleightOfHand, burst, moMoney, fastMelee, frangibleDisabling, recon, FMJ, presenceOfMind])
 
 
+public let Kilo = weapon(name: "Kilo 141", attachments: kilo_attachments, imageName: "Kilo 141", category: assaultRifleCategory)
+public let FAL = weapon(name: "FAL", attachments: FAL_attachments, imageName: "FAL", category: assaultRifleCategory)
+public let M4A1 = weapon(name: "M4A1", attachments: m_four_A_one_attachments, imageName: "M4A1", category: assaultRifleCategory)
+public let FR_556 = weapon(name: "FR 5.56", attachments: FR_five_five_six_attachments, imageName: "FR 556", category: assaultRifleCategory)
+public let Oden = weapon(name: "Oden", attachments: kilo_attachments, imageName: "Oden", category: assaultRifleCategory)
+public let M13 = weapon(name: "M13", attachments: kilo_attachments, imageName: "M13", category: assaultRifleCategory)
+public let FN_SCAR = weapon(name: "FN SCAR 17", attachments: kilo_attachments, imageName: "FN SCAR 17", category: assaultRifleCategory)
+public let AK_47 = weapon(name: "AK-47", attachments: kilo_attachments, imageName: "AK-47", category: assaultRifleCategory)
+public let RAM_7 = weapon(name: "RAM-7", attachments: kilo_attachments, imageName: "RAM-7", category: assaultRifleCategory)
+public let Grau_556 = weapon(name: "Grau 5.56", attachments: kilo_attachments, imageName: "Grau 556", category: assaultRifleCategory)
+public let CR_AMAX = weapon(name: "CR-56 AMAX", attachments: kilo_attachments, imageName: "CR-56 AMAX", category: assaultRifleCategory)
+public let AN_94 = weapon(name: "AN-94", attachments: kilo_attachments, imageName: "AN-94", category: assaultRifleCategory)
+public let AS_VAL = weapon(name: "AS VAL", attachments: kilo_attachments, imageName: "AS VAL", category: assaultRifleCategory)
+
+public let ARs = [Kilo, FAL, M4A1, Oden, M13, FN_SCAR, AK_47, RAM_7, Grau_556, CR_AMAX, AN_94, AS_VAL]
 
 
-public let ARList = ["Kilo 141": kilo_attachments, "FAL": FAL_attachments, "M4A1": m_four_A_one_attachments, "FR 5.56": FR_five_five_six_attachments, "Oden": kilo_attachments, "M13": kilo_attachments, "FN SCAR 17": kilo_attachments, "AK-47": kilo_attachments, "RAM-7": kilo_attachments, "Grau 5.56": kilo_attachments, "CR-56 AMAX": kilo_attachments, "AN-94": kilo_attachments, "AS VAL": kilo_attachments]
+
+public let ARList = ["Kilo 141": kilo_attachments,
+                     "FAL": FAL_attachments,
+                     "M4A1": m_four_A_one_attachments,
+                     "FR 5.56": FR_five_five_six_attachments,
+                     "Oden": kilo_attachments,
+                     "M13": kilo_attachments,
+                     "FN SCAR 17": kilo_attachments,
+                     "AK-47": kilo_attachments,
+                     "RAM-7": kilo_attachments,
+                     "Grau 5.56": kilo_attachments,
+                     "CR-56 AMAX": kilo_attachments,
+                     "AN-94": kilo_attachments,
+                     "AS VAL": kilo_attachments]

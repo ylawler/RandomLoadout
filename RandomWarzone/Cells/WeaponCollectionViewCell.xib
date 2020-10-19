@@ -16,9 +16,13 @@
                 <rect key="frame" x="0.0" y="0.0" width="344" height="182"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="xmark.shield" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="z6s-RF-eVL">
-                        <rect key="frame" x="8" y="8.5" width="328" height="165"/>
-                        <color key="backgroundColor" red="0.1221655235" green="0.20694416760000001" blue="0.26527664070000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VxX-Fc-Tgz" userLabel="Background Image View">
+                        <rect key="frame" x="8" y="8" width="328" height="166"/>
+                        <color key="backgroundColor" red="0.1215686275" green="0.20784313730000001" blue="0.2666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </imageView>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="xmark.shield" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="z6s-RF-eVL">
+                        <rect key="frame" x="32" y="48.5" width="296" height="100.5"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W9j-QD-fh6">
@@ -61,27 +65,32 @@
                 </subviews>
             </view>
             <constraints>
-                <constraint firstItem="z6s-RF-eVL" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="8" id="Dg7-be-9fp"/>
-                <constraint firstItem="xep-2R-wIZ" firstAttribute="trailing" secondItem="z6s-RF-eVL" secondAttribute="trailing" constant="-8" id="Kqo-RL-37t"/>
+                <constraint firstItem="z6s-RF-eVL" firstAttribute="top" secondItem="dvo-gw-TGT" secondAttribute="top" id="73G-Ho-cD2"/>
+                <constraint firstAttribute="trailing" secondItem="VxX-Fc-Tgz" secondAttribute="trailing" constant="8" id="B3c-1W-hee"/>
+                <constraint firstItem="xep-2R-wIZ" firstAttribute="trailing" secondItem="VxX-Fc-Tgz" secondAttribute="trailing" constant="-8" id="Kqo-RL-37t"/>
                 <constraint firstItem="dvo-gw-TGT" firstAttribute="leading" secondItem="Rex-Eu-6FA" secondAttribute="leading" id="PMi-VQ-580"/>
-                <constraint firstAttribute="trailing" secondItem="z6s-RF-eVL" secondAttribute="trailing" constant="8" id="Vrq-n7-3Dc"/>
+                <constraint firstItem="z6s-RF-eVL" firstAttribute="trailing" secondItem="xep-2R-wIZ" secondAttribute="trailing" id="VnR-aQ-saV"/>
                 <constraint firstItem="dvo-gw-TGT" firstAttribute="top" secondItem="Rex-Eu-6FA" secondAttribute="bottom" id="YDM-E5-cl0"/>
-                <constraint firstItem="W9j-QD-fh6" firstAttribute="leading" secondItem="z6s-RF-eVL" secondAttribute="leading" constant="8" id="YEC-0E-H2l"/>
-                <constraint firstItem="Rex-Eu-6FA" firstAttribute="top" secondItem="z6s-RF-eVL" secondAttribute="top" constant="8" id="aOw-Yp-miE"/>
-                <constraint firstAttribute="bottom" secondItem="z6s-RF-eVL" secondAttribute="bottom" constant="8" id="awh-WK-b5Y"/>
+                <constraint firstItem="W9j-QD-fh6" firstAttribute="leading" secondItem="VxX-Fc-Tgz" secondAttribute="leading" constant="8" id="YEC-0E-H2l"/>
+                <constraint firstItem="Rex-Eu-6FA" firstAttribute="top" secondItem="VxX-Fc-Tgz" secondAttribute="top" constant="8" id="aOw-Yp-miE"/>
                 <constraint firstItem="dvo-gw-TGT" firstAttribute="width" secondItem="Rex-Eu-6FA" secondAttribute="width" id="bs3-6x-Mwy"/>
-                <constraint firstItem="W9j-QD-fh6" firstAttribute="bottom" secondItem="z6s-RF-eVL" secondAttribute="bottom" constant="-4" id="buu-P7-Ah6"/>
+                <constraint firstItem="W9j-QD-fh6" firstAttribute="bottom" secondItem="VxX-Fc-Tgz" secondAttribute="bottom" constant="-4" id="buu-P7-Ah6"/>
+                <constraint firstAttribute="bottom" secondItem="VxX-Fc-Tgz" secondAttribute="bottom" constant="8" id="gEW-LL-WYl"/>
+                <constraint firstItem="W9j-QD-fh6" firstAttribute="top" secondItem="z6s-RF-eVL" secondAttribute="bottom" constant="2.5" id="kEu-VK-kd8"/>
                 <constraint firstItem="xep-2R-wIZ" firstAttribute="top" secondItem="Rex-Eu-6FA" secondAttribute="top" id="kje-kR-6K0"/>
                 <constraint firstItem="xep-2R-wIZ" firstAttribute="leading" secondItem="Rex-Eu-6FA" secondAttribute="trailing" constant="3.5" id="nUZ-Rh-Tjx"/>
+                <constraint firstItem="z6s-RF-eVL" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="32" id="pYl-rc-6WW"/>
                 <constraint firstItem="dvo-gw-TGT" firstAttribute="height" secondItem="Rex-Eu-6FA" secondAttribute="height" id="rbK-Qg-0pz"/>
-                <constraint firstItem="Rex-Eu-6FA" firstAttribute="width" secondItem="z6s-RF-eVL" secondAttribute="width" multiplier="0.6" id="w0v-XC-Iqg"/>
-                <constraint firstItem="Rex-Eu-6FA" firstAttribute="leading" secondItem="z6s-RF-eVL" secondAttribute="leading" constant="8" id="xUs-X2-trW"/>
-                <constraint firstItem="W9j-QD-fh6" firstAttribute="width" secondItem="z6s-RF-eVL" secondAttribute="width" multiplier="0.5" id="yRA-Tw-GZK"/>
-                <constraint firstItem="z6s-RF-eVL" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="yue-GI-hAg"/>
+                <constraint firstItem="VxX-Fc-Tgz" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="8" id="s9q-Ns-LaL"/>
+                <constraint firstItem="VxX-Fc-Tgz" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="tA8-H4-CIO"/>
+                <constraint firstItem="Rex-Eu-6FA" firstAttribute="width" secondItem="VxX-Fc-Tgz" secondAttribute="width" multiplier="0.6" id="w0v-XC-Iqg"/>
+                <constraint firstItem="Rex-Eu-6FA" firstAttribute="leading" secondItem="VxX-Fc-Tgz" secondAttribute="leading" constant="8" id="xUs-X2-trW"/>
+                <constraint firstItem="W9j-QD-fh6" firstAttribute="width" secondItem="VxX-Fc-Tgz" secondAttribute="width" multiplier="0.5" id="yRA-Tw-GZK"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="344" height="182"/>
             <connections>
+                <outlet property="backgroundImageView" destination="VxX-Fc-Tgz" id="9X9-gL-OMO"/>
                 <outlet property="collectionView" destination="xep-2R-wIZ" id="iEF-ud-IYp"/>
                 <outlet property="weaponClass" destination="W9j-QD-fh6" id="uIJ-HT-f0V"/>
                 <outlet property="weaponImageView" destination="z6s-RF-eVL" id="RW6-Pn-OmF"/>

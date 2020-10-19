@@ -14,10 +14,11 @@ class WeaponCollectionViewCell: UICollectionViewCell, UICollectionViewDelegate, 
     @IBOutlet weak var weaponLabel: UILabel!
     @IBOutlet weak var weaponName: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var weaponImageView: UIImageView!
+    @IBOutlet var weaponImageView: UIImageView!
     @IBOutlet weak var weaponClass: UILabel!
+    @IBOutlet weak var backgroundImageView: UIImageView!
     
-    var numAttachments: Int = 3
+    var numAttachments: Int = 0
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -30,12 +31,24 @@ class WeaponCollectionViewCell: UICollectionViewCell, UICollectionViewDelegate, 
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        weaponImageView.layer.masksToBounds = false
-        weaponImageView.layer.shadowColor = UIColor.darkGray.cgColor
-        weaponImageView.layer.shadowOffset = .zero
-        weaponImageView.layer.shadowRadius = 4
-        weaponImageView.layer.shadowOpacity = 0.75
-        weaponImageView.layer.cornerRadius = 12
+        backgroundImageView.layer.masksToBounds = false
+        backgroundImageView.layer.shadowColor = UIColor.darkGray.cgColor
+        backgroundImageView.layer.shadowOffset = .zero
+        backgroundImageView.layer.shadowRadius = 4
+        backgroundImageView.layer.shadowOpacity = 0.75
+        backgroundImageView.layer.cornerRadius = 12
+    }
+    
+    func configure(with weapon: weapon) {
+        self.weaponName.text = weapon.name
+        self.weaponClass.text = weapon.category
+        self.weaponLabel.text = weapon.category
+        self.numAttachments = weapon.setAttachments.count
+        
+        if let image = UIImage(named: weapon.imageName) {
+            self.weaponImageView.image = image
+        } 
+        
     }
     
     static let identifier = "WeaponCollectionViewCellId"

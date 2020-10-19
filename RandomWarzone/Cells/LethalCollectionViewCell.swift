@@ -32,6 +32,12 @@ class LethalCollectionViewCell: UICollectionViewCell {
         backgroundImageView.layer.cornerRadius = 12
     }
     
+    func configure(lethal: Lethal) {
+        self.title.text = "Lethal"
+        self.weapon.text = lethal.name
+        self.weaponImage.image = UIImage(named: lethal.imageName)
+    }
+    
     static let identifier = "LethalCollectionViewCellId"
     
     static func nib() -> UINib {

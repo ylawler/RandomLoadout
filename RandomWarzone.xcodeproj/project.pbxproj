@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		AC295DBF2531AC5D00D7BA6A /* AssaultRifles.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC295DBE2531AC5D00D7BA6A /* AssaultRifles.swift */; };
+		AC47353A253449A00063594C /* TacticalAndLethal.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC473539253449A00063594C /* TacticalAndLethal.swift */; };
+		AC47353D25344E860063594C /* TacticalCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC47353B25344E860063594C /* TacticalCollectionViewCell.swift */; };
+		AC47353E25344E860063594C /* TacticalCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC47353C25344E860063594C /* TacticalCollectionViewCell.xib */; };
+		AC47354025346E0F0063594C /* Handguns.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC47353F25346E0F0063594C /* Handguns.swift */; };
+		AC595773253329C300C3D395 /* Loadout.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC595772253329C300C3D395 /* Loadout.swift */; };
 		ACA410C4253208AA00D0A7FC /* Perks.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA410C3253208AA00D0A7FC /* Perks.swift */; };
 		ACA410C6253208B900D0A7FC /* SMGs.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA410C5253208B900D0A7FC /* SMGs.swift */; };
 		ACA410C8253208D000D0A7FC /* Shotguns.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA410C7253208D000D0A7FC /* Shotguns.swift */; };
@@ -35,6 +40,11 @@
 
 /* Begin PBXFileReference section */
 		AC295DBE2531AC5D00D7BA6A /* AssaultRifles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssaultRifles.swift; sourceTree = "<group>"; };
+		AC473539253449A00063594C /* TacticalAndLethal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TacticalAndLethal.swift; sourceTree = "<group>"; };
+		AC47353B25344E860063594C /* TacticalCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TacticalCollectionViewCell.swift; sourceTree = "<group>"; };
+		AC47353C25344E860063594C /* TacticalCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TacticalCollectionViewCell.xib; sourceTree = "<group>"; };
+		AC47353F25346E0F0063594C /* Handguns.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Handguns.swift; sourceTree = "<group>"; };
+		AC595772253329C300C3D395 /* Loadout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loadout.swift; sourceTree = "<group>"; };
 		ACA410C3253208AA00D0A7FC /* Perks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Perks.swift; sourceTree = "<group>"; };
 		ACA410C5253208B900D0A7FC /* SMGs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMGs.swift; sourceTree = "<group>"; };
 		ACA410C7253208D000D0A7FC /* Shotguns.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shotguns.swift; sourceTree = "<group>"; };
@@ -93,6 +103,8 @@
 				ACA5EA082530B94A003A9070 /* LethalCollectionViewCell.xib */,
 				ACA5EA0B2530BF67003A9070 /* attachmentCollectionViewCell.swift */,
 				ACA5EA0C2530BF67003A9070 /* attachmentCollectionViewCell.xib */,
+				AC47353B25344E860063594C /* TacticalCollectionViewCell.swift */,
+				AC47353C25344E860063594C /* TacticalCollectionViewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -100,11 +112,20 @@
 		AC295DBD2531AC3D00D7BA6A /* DataObjects */ = {
 			isa = PBXGroup;
 			children = (
+				AC5957712533283F00C3D395 /* Loadout */,
 				ACA410D32532092600D0A7FC /* TacticalAndLethal */,
 				ACA410D22532091C00D0A7FC /* Perks */,
 				ACA410D12532090C00D0A7FC /* Weapons */,
 			);
 			path = DataObjects;
+			sourceTree = "<group>";
+		};
+		AC5957712533283F00C3D395 /* Loadout */ = {
+			isa = PBXGroup;
+			children = (
+				AC595772253329C300C3D395 /* Loadout.swift */,
+			);
+			path = Loadout;
 			sourceTree = "<group>";
 		};
 		ACA410D12532090C00D0A7FC /* Weapons */ = {
@@ -117,6 +138,7 @@
 				ACA410CB253208F100D0A7FC /* MarksmanRifles.swift */,
 				ACA410CD253208FB00D0A7FC /* SniperRifles.swift */,
 				ACA410CF2532090600D0A7FC /* Melees.swift */,
+				AC47353F25346E0F0063594C /* Handguns.swift */,
 			);
 			path = Weapons;
 			sourceTree = "<group>";
@@ -132,6 +154,7 @@
 		ACA410D32532092600D0A7FC /* TacticalAndLethal */ = {
 			isa = PBXGroup;
 			children = (
+				AC473539253449A00063594C /* TacticalAndLethal.swift */,
 			);
 			path = TacticalAndLethal;
 			sourceTree = "<group>";
@@ -230,6 +253,7 @@
 				ACA5E9F225309D86003A9070 /* LaunchScreen.storyboard in Resources */,
 				ACA5EA022530B8E6003A9070 /* WeaponCollectionViewCell.xib in Resources */,
 				ACA5EA0A2530B94A003A9070 /* LethalCollectionViewCell.xib in Resources */,
+				AC47353E25344E860063594C /* TacticalCollectionViewCell.xib in Resources */,
 				ACA5E9EF25309D86003A9070 /* Assets.xcassets in Resources */,
 				ACA5E9EA25309D80003A9070 /* Main.storyboard in Resources */,
 				ACA5EA0E2530BF67003A9070 /* attachmentCollectionViewCell.xib in Resources */,
@@ -246,9 +270,12 @@
 			files = (
 				ACA410C8253208D000D0A7FC /* Shotguns.swift in Sources */,
 				ACA410CC253208F100D0A7FC /* MarksmanRifles.swift in Sources */,
+				AC595773253329C300C3D395 /* Loadout.swift in Sources */,
 				ACA5EA052530B907003A9070 /* PerksCollectionViewCell.swift in Sources */,
 				ACA410CE253208FB00D0A7FC /* SniperRifles.swift in Sources */,
 				ACA5EA012530B8E6003A9070 /* WeaponCollectionViewCell.swift in Sources */,
+				AC47354025346E0F0063594C /* Handguns.swift in Sources */,
+				AC47353A253449A00063594C /* TacticalAndLethal.swift in Sources */,
 				ACA410C6253208B900D0A7FC /* SMGs.swift in Sources */,
 				ACA5EA092530B94A003A9070 /* LethalCollectionViewCell.swift in Sources */,
 				ACA410C4253208AA00D0A7FC /* Perks.swift in Sources */,
@@ -256,6 +283,7 @@
 				ACA410D02532090600D0A7FC /* Melees.swift in Sources */,
 				ACA5E9ED25309D80003A9070 /* RandomWarzone.xcdatamodeld in Sources */,
 				ACA5EA0D2530BF67003A9070 /* attachmentCollectionViewCell.swift in Sources */,
+				AC47353D25344E860063594C /* TacticalCollectionViewCell.swift in Sources */,
 				AC295DBF2531AC5D00D7BA6A /* AssaultRifles.swift in Sources */,
 				ACA5E9E325309D80003A9070 /* AppDelegate.swift in Sources */,
 				ACA5E9FA2530B7EC003A9070 /* GameCollectionViewController.swift in Sources */,
