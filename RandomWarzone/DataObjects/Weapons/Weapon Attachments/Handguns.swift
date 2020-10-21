@@ -148,18 +148,3 @@ public let renetti_list = attachments(muzzle: [flashGuard, monolithicSuppressor,
                                                rearGrip: [XRKProGrip, XRKSpeedGrip],
                                                perk: [fastMelee, frangibleWounding, fullyLoaded, sleightOfHand, frangibleDisabling, moMoney, recon, heavyHitter, FMJ, akimbo])
 
-public let point357 = weapon(name: ".357", attachments: three_five_seven_list, imageName: "_357", category: handgunCategory)
-public let nineteenEleven = weapon(name: "1911", attachments: nineteen_eleven_list, imageName: "1911", category: handgunCategory)
-public let X16 = weapon(name: "X16", attachments: x_sixteen_list, imageName: "X16", category: handgunCategory)
-public let M19 = weapon(name: "M19", attachments: m_nineteen_list, imageName: "M19", category: handgunCategory)
-public let point50_GS = weapon(name: ".50 GS", attachments: point_five_GS_list, imageName: "_50 GS", category: handgunCategory)
-public let Renetti = weapon(name: "Renetti", attachments: renetti_list, imageName: "Renetti", category: handgunCategory)
-
-public let Hanguns = [point357, nineteenEleven, X16, M19, point50_GS, Renetti]
-
-public let handgunList = [".357": three_five_seven_list,
-                   "1911": nineteen_eleven_list,
-                   "X16": x_sixteen_list,
-                   "M19": m_nineteen_list,
-                   ".50 GS": point_five_GS_list,
-                   "Renetti": renetti_list]

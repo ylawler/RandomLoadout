@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="a6V-ip-Zt6">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -48,9 +48,9 @@
                         <color key="backgroundColor" red="0.43916493649999999" green="0.43924486639999999" blue="0.43915987010000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="DFK-hf-gyG" firstAttribute="top" secondItem="U4e-oT-KHl" secondAttribute="bottom" constant="16" id="CHR-1z-Red"/>
-                            <constraint firstItem="A7b-rR-0MZ" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Dex-ht-qIP"/>
                             <constraint firstItem="A7b-rR-0MZ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="I5Z-Ue-hAG"/>
                             <constraint firstItem="U4e-oT-KHl" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="K4c-bO-aPH"/>
+                            <constraint firstItem="A7b-rR-0MZ" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="XsM-5k-Fo6"/>
                             <constraint firstItem="DFK-hf-gyG" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="dSb-9a-Zbl"/>
                             <constraint firstItem="U4e-oT-KHl" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="daz-qM-yZJ"/>
                             <constraint firstItem="U4e-oT-KHl" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.57971" id="sOb-My-dXu"/>
@@ -59,15 +59,145 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="" image="shuffle" catalog="system" id="qHD-Ty-Jjy"/>
                     <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="QiA-3T-gvh"/>
                     <connections>
                         <outlet property="button" destination="A7b-rR-0MZ" id="gqV-Rd-9SN"/>
-                        <segue destination="x6j-HH-AnB" kind="show" identifier="showGameSegue" id="RGH-pK-D2o"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1042.0289855072465" y="123.88392857142857"/>
+            <point key="canvasLocation" x="2862.3188405797105" y="123.88392857142857"/>
+        </scene>
+        <!--Random-->
+        <scene sceneID="vCs-Ih-cpc">
+            <objects>
+                <viewController id="9tG-cL-xOw" customClass="PlayerSelectionViewController" customModule="RandomWarzone" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="IYt-V1-E7k">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ZMO-y7-MVe">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <color key="backgroundColor" red="0.43916493649999999" green="0.43924486639999999" blue="0.43915987010000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="aHa-Lf-AC1">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="50" height="50"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PlayerCollectionViewCellId" id="X4e-e9-tdY">
+                                        <rect key="frame" x="0.0" y="50" width="128" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="kHR-JD-2UQ">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                </cells>
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="PlayerCollectionReusableViewId" id="36r-5Z-Fef">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </collectionReusableView>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.43916493649999999" green="0.43924486639999999" blue="0.43915987010000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="ZMO-y7-MVe" firstAttribute="top" secondItem="bCT-h0-VnB" secondAttribute="top" id="3Em-Y7-wYa"/>
+                            <constraint firstItem="bCT-h0-VnB" firstAttribute="trailing" secondItem="ZMO-y7-MVe" secondAttribute="trailing" id="JU6-N3-4Cx"/>
+                            <constraint firstItem="ZMO-y7-MVe" firstAttribute="bottom" secondItem="bCT-h0-VnB" secondAttribute="bottom" id="j8y-qv-oUM"/>
+                            <constraint firstItem="ZMO-y7-MVe" firstAttribute="leading" secondItem="bCT-h0-VnB" secondAttribute="leading" id="zjU-kF-s20"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="bCT-h0-VnB"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Random" largeTitleDisplayMode="always" id="gf9-1N-ajC">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="circle.grid.2x2" catalog="system" id="jk8-Ad-rcR">
+                            <color key="tintColor" red="0.1221655235" green="0.20694416760000001" blue="0.26527664070000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem title="Item" image="plus" catalog="system" id="L8z-uW-32y">
+                                <color key="tintColor" red="0.1221655235" green="0.20694416760000001" blue="0.26527664070000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </barButtonItem>
+                            <barButtonItem title="Item" image="magnifyingglass" catalog="system" id="ERL-HS-meT">
+                                <color key="tintColor" red="0.1221655235" green="0.20694416760000001" blue="0.26527664070000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="collectionView" destination="ZMO-y7-MVe" id="se0-FF-AmE"/>
+                        <segue destination="UYm-c8-mLj" kind="show" identifier="showRecentGame" id="2xx-oe-pAR"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HiV-dW-0kB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-478" y="1246"/>
+        </scene>
+        <!--Recent Game View Controller-->
+        <scene sceneID="3pz-Z3-rUm">
+            <objects>
+                <viewController id="UYm-c8-mLj" customClass="RecentGameViewController" customModule="RandomWarzone" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="JZX-aS-U79">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hna-Vt-iwj">
+                                <rect key="frame" x="143" y="427" width="128" height="42"/>
+                                <color key="backgroundColor" red="0.63281283190000004" green="0.6390783055" blue="0.6390783055" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="128" id="7nQ-BT-ySo"/>
+                                    <constraint firstAttribute="height" constant="42" id="jNJ-Bp-tnI"/>
+                                </constraints>
+                                <color key="tintColor" red="0.95849102740000003" green="0.3940945864" blue="0.18387433889999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" image="shuffle" catalog="system"/>
+                                <connections>
+                                    <action selector="shuffleTapped:" destination="UYm-c8-mLj" eventType="touchUpInside" id="UQc-H8-tR2"/>
+                                </connections>
+                            </button>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="U2K-Th-RKc">
+                                <rect key="frame" x="8" y="96" width="398" height="96"/>
+                                <color key="backgroundColor" red="0.10480716079999999" green="0.13690230249999999" blue="0.1619310081" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="96" id="Wwd-BF-4Ma"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="R8w-dh-CWD">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MemberCollectionViewCellId" id="4Jn-qw-Kns">
+                                        <rect key="frame" x="0.0" y="-16" width="128" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="ye2-dk-Zim">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.10480716079999999" green="0.13690230249999999" blue="0.1619310081" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="U2K-Th-RKc" firstAttribute="trailing" secondItem="vX3-9T-cfm" secondAttribute="trailing" constant="-8" id="C2p-yU-7lw"/>
+                            <constraint firstItem="U2K-Th-RKc" firstAttribute="leading" secondItem="vX3-9T-cfm" secondAttribute="leading" constant="8" id="G7z-CJ-a5M"/>
+                            <constraint firstItem="Hna-Vt-iwj" firstAttribute="centerY" secondItem="JZX-aS-U79" secondAttribute="centerY" id="RAj-Jp-4XR"/>
+                            <constraint firstItem="Hna-Vt-iwj" firstAttribute="centerX" secondItem="JZX-aS-U79" secondAttribute="centerX" id="lUt-rJ-Nhx"/>
+                            <constraint firstItem="U2K-Th-RKc" firstAttribute="top" secondItem="vX3-9T-cfm" secondAttribute="top" constant="8" id="m8h-AZ-Y2T"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="vX3-9T-cfm"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="bMs-YO-Sfn"/>
+                    <connections>
+                        <outlet property="membersCollectionView" destination="U2K-Th-RKc" id="AXs-bD-t0j"/>
+                        <outlet property="shuffleButton" destination="Hna-Vt-iwj" id="FXf-sE-HbM"/>
+                        <segue destination="x6j-HH-AnB" kind="presentation" identifier="showGameSegue" id="Jrt-qO-a3x"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="S9r-fb-YAa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1243.4782608695652" y="2029.6875"/>
         </scene>
         <!--Game Collection View Controller-->
         <scene sceneID="iLq-7w-ReG">
@@ -102,11 +232,62 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zbv-xs-TQd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1969" y="124"/>
+            <point key="canvasLocation" x="-2455" y="2050"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="L7Z-0w-Cyb">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="a6V-ip-Zt6" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="LbP-HN-kj2">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" red="0.43916493649999999" green="0.43924486639999999" blue="0.43915987010000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="tintColor" red="0.63281283190000004" green="0.6390783055" blue="0.6390783055" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" red="0.43916493649999999" green="0.43924486639999999" blue="0.43915987010000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="selectedImageTintColor" red="0.10480716079999999" green="0.13690230249999999" blue="0.1619310081" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="Ujw-wM-hmB"/>
+                        <segue destination="DSf-vQ-NL7" kind="relationship" relationship="viewControllers" id="N38-1i-m1R"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WZq-MF-eVT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="938" y="-224"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="vHF-MP-b6z">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="DSf-vQ-NL7" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="person.3" catalog="system" id="CaA-k2-eWI"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="FN9-hc-8hX">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.10480716079999999" green="0.13690230249999999" blue="0.1619310081" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" red="0.43916493649999999" green="0.43924486639999999" blue="0.43915987010000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="0.1221655235" green="0.20694416760000001" blue="0.26527664070000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="9tG-cL-xOw" kind="relationship" relationship="rootViewController" id="7pe-tm-TY5"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iBa-5q-eKB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-478.26086956521743" y="497.54464285714283"/>
         </scene>
     </scenes>
     <resources>
         <image name="MW" width="512" height="300"/>
+        <image name="circle.grid.2x2" catalog="system" width="128" height="112"/>
+        <image name="magnifyingglass" catalog="system" width="128" height="115"/>
+        <image name="person.3" catalog="system" width="128" height="62"/>
         <image name="play.rectangle" catalog="system" width="128" height="93"/>
+        <image name="plus" catalog="system" width="128" height="113"/>
+        <image name="shuffle" catalog="system" width="128" height="93"/>
     </resources>
 </document>

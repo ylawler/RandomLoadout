@@ -64,14 +64,16 @@ class GameCollectionViewController: UICollectionViewController, UICollectionView
                 // Primary Weapon
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WeaponCollectionViewCell.identifier, for: indexPath) as! WeaponCollectionViewCell
                 
-                cell.configure(with: randomLoadoutClass.primaryWeapon)
-                
+                let configureData = randomLoadoutClass.getPrimary()
+                cell.configure(group: configureData.group, weapon: configureData.weapon, weaponClass: configureData.weaponClass)
                 return cell
+                
             } else if indexPath.item == 1 {
                 // Secondary Weapon
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WeaponCollectionViewCell.identifier, for: indexPath) as! WeaponCollectionViewCell
                 
-                cell.configure(with: randomLoadoutClass.secondaryWeapon)
+                let configureData = randomLoadoutClass.getSecondary()
+                cell.configure(group: configureData.group, weapon: configureData.weapon, weaponClass: configureData.weaponClass)
                 return cell
                 
             } else if indexPath.item == 2 {

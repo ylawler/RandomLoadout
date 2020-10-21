@@ -8,14 +8,6 @@
 
 import UIKit
 
-public let assaultRifleCategory = "Assault Rifles"
-public let SMGsCategory = "SMGs"
-public let ShotgunsCategory = "Shotguns"
-public let LMGsCategory = "LMGs"
-public let marksmanRiflesCategory = "Marksman Rifles"
-public let sniperRifleCategory = "Sniper Rifles"
-public let meleesCategory = "Melees"
-public let handgunCategory = "Handguns"
 
 public class weapon {
     
@@ -23,19 +15,19 @@ public class weapon {
     var allAttachments: Attachments
     var imageName: String
     var setAttachments: [String: attachment] = [:]
-    var category: String
+//    var category: Category
     
     
-    init(name: String, attachments: attachments, imageName: String, category: String) {
+    init(name: String, attachments: attachments, imageName: String) {
         self.name = name
         self.allAttachments = Attachments(attachments: attachments)
         self.imageName = imageName
-        self.category = category
+//        self.category = category
     }
     
     func displayAttachments() {
         for attachment in self.setAttachments {
-            print("\(attachment.key) - \(attachment.value.name)")
+            print("\t-> \(attachment.key) : \(attachment.value.name)")
         }
     }
     
@@ -43,10 +35,9 @@ public class weapon {
         // Get a random number between 1 and 5 -> Determine how many attachments
         let numberOfRandomAttachments = Int.random(in: 0...5)
         
-        
         // For the above number of times, choose a random attachment category
-        print("-------------------------------------------------")
-        print("number of random attachments: \(numberOfRandomAttachments)\n")
+//        print("-------------------------------------------------")
+//        print("number of random attachments: \(numberOfRandomAttachments)\n")
         if numberOfRandomAttachments == 0 {
             // No attachments...
         } else {
@@ -58,20 +49,26 @@ public class weapon {
                 var randomAttachmentKey = ""
                 var newAttachmentFound = false
                 
+                
+                
                 while newAttachmentFound == false {
                     randomAttachmentKey = updatedAttachmentList[Int.random(in: 0..<updatedAttachmentList.count)]
+                    
+                    print("checking: \(randomAttachmentKey), remaining: \(updatedAttachmentList)")
+                    print("setAttachment keys: \(self.setAttachments.keys), contains \(randomAttachmentKey)?: \(self.setAttachments.keys.contains(randomAttachmentKey))")
+                    
                     if !self.setAttachments.keys.contains(randomAttachmentKey) && self.allAttachments.allAttachments[randomAttachmentKey] != [] {
                         newAttachmentFound = true
                         if let idx = updatedAttachmentList.firstIndex(of: randomAttachmentKey) {
                             print("set - \(updatedAttachmentList[idx])")
                             updatedAttachmentList.remove(at: idx)
-                            print(updatedAttachmentList)
+                            
                         }
                     } else {
                         if let idx = updatedAttachmentList.firstIndex(of: randomAttachmentKey) {
                             print("removing: \(updatedAttachmentList[idx])")
                             updatedAttachmentList.remove(at: idx)
-                            print(updatedAttachmentList)
+                            
                         }
                     }
                 }
@@ -86,43 +83,57 @@ public class weapon {
         
         if let attachmentList = self.allAttachments.allAttachments[key] {
             let randomAttachment = attachmentList[Int.random(in: 0..<attachmentList.count)]
-            print("Setting \(key) attachment to \(randomAttachment.name)\n")
+//            print("Setting \(key) attachment to \(randomAttachment.name)\n")
             self.setAttachments[key] = randomAttachment
         }
     }
-        
+    
+    
+    
 }
 
 
 
-class Loadout {
+public class Loadout {
     
     var primaryWeapon: weapon
+    var primaryWeaponCategory: String
     var secondaryWeapon: weapon
+    var secondaryWeaponCategory: String
     var perks: [Perk]
     var lethal: Lethal
     var tactical: Tactical
     
-    init(perks: [Perk], primary: weapon, secondary: weapon, lethal: Lethal, tactical: Tactical) {
+    
+    init(perks: [Perk], primary: weapon, primaryCategory: String, secondary: weapon, secondaryCategory: String, lethal: Lethal, tactical: Tactical) {
         self.primaryWeapon = primary
         self.secondaryWeapon = secondary
         self.perks = perks
         self.lethal = lethal
         self.tactical = tactical
+        self.primaryWeaponCategory = primaryCategory
+        self.secondaryWeaponCategory = secondaryCategory
     }
     
     func displayLoadout() {
         print("Primary Weapon\n------------------\n")
-        print("\(self.primaryWeapon.category)\n")
+        print("\(self.primaryWeaponCategory)\n")
         print("\(self.primaryWeapon.name)\n")
         self.primaryWeapon.displayAttachments()
         
         print("\nSecondary Weapon\n------------------\n")
-        print("\(self.secondaryWeapon.category)\n")
+        print("\(self.secondaryWeaponCategory)\n")
         print("\(self.secondaryWeapon.name)\n")
         self.secondaryWeapon.displayAttachments()
         
     }
     
+    func getPrimary() -> (group: String, weapon: weapon, weaponClass: String) {
+        return ("Primary Weapon", self.primaryWeapon, self.primaryWeaponCategory)
+    }
+    
+    func getSecondary() -> (group: String, weapon: weapon, weaponClass: String) {
+        return ("Secondary Weapon", self.secondaryWeapon, self.secondaryWeaponCategory)
+    }
     
 }

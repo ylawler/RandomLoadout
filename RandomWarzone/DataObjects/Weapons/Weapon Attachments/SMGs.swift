@@ -206,25 +206,3 @@ public let ISO_List = attachments(muzzle: [tacticalSuppressor, flashGuard, breac
                                   ammunition: [thirtyMags, fiftyRoundDrums],
                                   rearGrip: [FSSViceISO, FTACEliteISO, ISOTacForm],
                                   perk: [FMJ, heavyHitter, recon, frangibleWounding, sleightOfHand, fullyLoaded, moMoney, frangibleDisabling, fastMelee, burst])
-
-public let AUG = weapon(name: "AUG", attachments: AUG_List, imageName: "AUG", category: SMGsCategory)
-public let P90 = weapon(name: "P90", attachments: P90_List, imageName: "P90", category: SMGsCategory)
-public let MP5 = weapon(name: "M4A1", attachments: MP5_list, imageName: "MP5", category: SMGsCategory)
-public let Uzi = weapon(name: "Uzi", attachments: Uzi_List, imageName: "Uzi", category: SMGsCategory)
-public let PP19_Bizon = weapon(name: "PP19 Bizon", attachments: PP19_Bizon_list, imageName: "PP19 Bizon", category: SMGsCategory)
-public let MP7 = weapon(name: "MP7", attachments: MP7_List, imageName: "MP7", category: SMGsCategory)
-public let Striker_45 = weapon(name: "Striker 45", attachments: Striker_45_List, imageName: "Striker 45", category: SMGsCategory)
-public let Fennec = weapon(name: "Fennec", attachments: Fennec_List, imageName: "Fennec", category: SMGsCategory)
-public let ISO = weapon(name: "ISO", attachments: ISO_List, imageName: "ISO", category: SMGsCategory)
-
-public let SMGs = [AUG, P90, MP5, Uzi, PP19_Bizon, MP7, Striker_45, Fennec, ISO]
-
-let SMGsList = ["AUG": AUG_List,
-                "P90": P90_List,
-                "MP5": MP5_list,
-                "Uzi": Uzi_List,
-                "PP19 Bizon": PP19_Bizon_list,
-                "MP7": MP7_List,
-                "Striker 45": Striker_45_List,
-                "Fennec": Fennec_List,
-                "ISO": ISO_List]

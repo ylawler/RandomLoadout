@@ -39,17 +39,17 @@ class WeaponCollectionViewCell: UICollectionViewCell, UICollectionViewDelegate, 
         backgroundImageView.layer.cornerRadius = 12
     }
     
-    func configure(with weapon: weapon) {
+    func configure(group: String, weapon: weapon, weaponClass: String) {
         self.weaponName.text = weapon.name
-        self.weaponClass.text = weapon.category
-        self.weaponLabel.text = weapon.category
+        self.weaponClass.text = weaponClass
+        self.weaponLabel.text = group
         self.numAttachments = weapon.setAttachments.count
         
         if let image = UIImage(named: weapon.imageName) {
             self.weaponImageView.image = image
-        } 
-        
+        }
     }
+      
     
     static let identifier = "WeaponCollectionViewCellId"
     
