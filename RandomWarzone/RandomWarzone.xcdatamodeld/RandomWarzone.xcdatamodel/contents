@@ -1,4 +1,28 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="false" userDefinedModelVersionIdentifier="">
-    <elements/>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19H2" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Player" representedClassName="Player" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="String"/>
+        <attribute name="img" optional="YES" attributeType="Binary"/>
+        <attribute name="isOnline" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="isReady" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <relationship name="regiment" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Regiment" inverseName="players" inverseEntity="Regiment"/>
+        <relationship name="squad" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Squad" inverseName="players" inverseEntity="Squad"/>
+    </entity>
+    <entity name="Regiment" representedClassName="Regiment" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="String"/>
+        <attribute name="img" optional="YES" attributeType="Binary"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="players" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Player" inverseName="regiment" inverseEntity="Player"/>
+    </entity>
+    <entity name="Squad" representedClassName="Squad" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="String"/>
+        <attribute name="img" optional="YES" attributeType="Binary"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="players" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Player" inverseName="squad" inverseEntity="Player"/>
+    </entity>
+    <elements>
+        <element name="Player" positionX="-54" positionY="-9" width="128" height="133"/>
+        <element name="Regiment" positionX="0" positionY="90" width="128" height="103"/>
+        <element name="Squad" positionX="-27" positionY="54" width="128" height="103"/>
+    </elements>
 </model>

@@ -3,11 +3,21 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		AC295DBF2531AC5D00D7BA6A /* AssaultRifles.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC295DBE2531AC5D00D7BA6A /* AssaultRifles.swift */; };
+		AC2F6FC12547288000A629C3 /* InvitesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2F6FC02547288000A629C3 /* InvitesCollectionViewController.swift */; };
+		AC2F6FC4254732C300A629C3 /* EventsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2F6FC3254732C300A629C3 /* EventsCollectionViewController.swift */; };
+		AC2F6FC7254734A400A629C3 /* EventsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2F6FC5254734A400A629C3 /* EventsCollectionViewCell.swift */; };
+		AC2F6FC8254734A400A629C3 /* EventsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC2F6FC6254734A400A629C3 /* EventsCollectionViewCell.xib */; };
+		AC444AF225418F5700690A5D /* Squad.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC444AF125418F5700690A5D /* Squad.swift */; };
+		AC444AF42541A9DF00690A5D /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC444AF32541A9DF00690A5D /* FavoriteViewController.swift */; };
+		AC444AF62541AA6700690A5D /* FriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC444AF52541AA6700690A5D /* FriendViewController.swift */; };
+		AC444AF82541AA7300690A5D /* RegimentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC444AF72541AA7300690A5D /* RegimentViewController.swift */; };
+		AC444AFC2541AC7600690A5D /* GamerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC444AFA2541AC7600690A5D /* GamerCollectionViewCell.swift */; };
+		AC444AFD2541AC7600690A5D /* GamerCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC444AFB2541AC7600690A5D /* GamerCollectionViewCell.xib */; };
 		AC47353A253449A00063594C /* TacticalAndLethal.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC473539253449A00063594C /* TacticalAndLethal.swift */; };
 		AC47353D25344E860063594C /* TacticalCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC47353B25344E860063594C /* TacticalCollectionViewCell.swift */; };
 		AC47353E25344E860063594C /* TacticalCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC47353C25344E860063594C /* TacticalCollectionViewCell.xib */; };
@@ -27,7 +37,6 @@
 		ACA410D02532090600D0A7FC /* Melees.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA410CF2532090600D0A7FC /* Melees.swift */; };
 		ACA5E9E325309D80003A9070 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA5E9E225309D80003A9070 /* AppDelegate.swift */; };
 		ACA5E9E525309D80003A9070 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA5E9E425309D80003A9070 /* SceneDelegate.swift */; };
-		ACA5E9E725309D80003A9070 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA5E9E625309D80003A9070 /* ViewController.swift */; };
 		ACA5E9EA25309D80003A9070 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACA5E9E825309D80003A9070 /* Main.storyboard */; };
 		ACA5E9ED25309D80003A9070 /* RandomWarzone.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = ACA5E9EB25309D80003A9070 /* RandomWarzone.xcdatamodeld */; };
 		ACA5E9EF25309D86003A9070 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ACA5E9EE25309D86003A9070 /* Assets.xcassets */; };
@@ -41,15 +50,54 @@
 		ACA5EA0A2530B94A003A9070 /* LethalCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACA5EA082530B94A003A9070 /* LethalCollectionViewCell.xib */; };
 		ACA5EA0D2530BF67003A9070 /* attachmentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA5EA0B2530BF67003A9070 /* attachmentCollectionViewCell.swift */; };
 		ACA5EA0E2530BF67003A9070 /* attachmentCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACA5EA0C2530BF67003A9070 /* attachmentCollectionViewCell.xib */; };
+		ACAE439C2546E8E300EBBF72 /* AddNewSquadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAE439B2546E8E300EBBF72 /* AddNewSquadViewController.swift */; };
+		ACAE439F2546EA9D00EBBF72 /* addedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAE439D2546EA9D00EBBF72 /* addedCollectionViewCell.swift */; };
+		ACAE43A02546EA9D00EBBF72 /* addedCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACAE439E2546EA9D00EBBF72 /* addedCollectionViewCell.xib */; };
+		ACAE43A42546EAC100EBBF72 /* friendsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAE43A22546EAC100EBBF72 /* friendsCollectionViewCell.swift */; };
+		ACAE43A52546EAC100EBBF72 /* friendsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACAE43A32546EAC100EBBF72 /* friendsCollectionViewCell.xib */; };
+		ACAF811D2545839B007398A6 /* AddNewItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAF811C2545839B007398A6 /* AddNewItemViewController.swift */; };
+		ACAF811F2545859E007398A6 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAF811E2545859D007398A6 /* LoginViewController.swift */; };
+		ACAF812325459E5C007398A6 /* LoginCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAF812125459E5C007398A6 /* LoginCollectionViewCell.swift */; };
+		ACAF812425459E5C007398A6 /* LoginCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACAF812225459E5C007398A6 /* LoginCollectionViewCell.xib */; };
+		ACAF812725459EE8007398A6 /* SignUpCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAF812525459EE8007398A6 /* SignUpCollectionViewCell.swift */; };
+		ACAF812825459EE8007398A6 /* SignUpCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACAF812625459EE8007398A6 /* SignUpCollectionViewCell.xib */; };
+		ACAF812B2545E661007398A6 /* FIRAuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAF812A2545E661007398A6 /* FIRAuthenticationManager.swift */; };
+		ACAF812E25462083007398A6 /* protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAF812D25462083007398A6 /* protocols.swift */; };
 		ACE404E1254074D100CB5F20 /* PlayerCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE404DF254074D100CB5F20 /* PlayerCollectionReusableView.swift */; };
 		ACE404E2254074D100CB5F20 /* PlayerCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACE404E0254074D100CB5F20 /* PlayerCollectionReusableView.xib */; };
 		ACE404E425407D0D00CB5F20 /* RecentGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE404E325407D0D00CB5F20 /* RecentGameViewController.swift */; };
 		ACE404E82540979C00CB5F20 /* MemberCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE404E62540979C00CB5F20 /* MemberCollectionViewCell.swift */; };
 		ACE404E92540979C00CB5F20 /* MemberCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACE404E72540979C00CB5F20 /* MemberCollectionViewCell.xib */; };
+		ACE404EB25409D7A00CB5F20 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ACE404EA25409D7A00CB5F20 /* GoogleService-Info.plist */; };
+		ACE404EF2540A28B00CB5F20 /* FIRDatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE404EE2540A28B00CB5F20 /* FIRDatabaseManager.swift */; };
+		ACEF43EE25447805007DA46B /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEF43ED25447805007DA46B /* CoreDataManager.swift */; };
+		ACEF43F025449B44007DA46B /* AddNewCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEF43EF25449B44007DA46B /* AddNewCollectionViewController.swift */; };
+		ACEF43F42545742E007DA46B /* NewTitleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEF43F22545742E007DA46B /* NewTitleCollectionViewCell.swift */; };
+		ACEF43F52545742E007DA46B /* NewTitleCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACEF43F32545742E007DA46B /* NewTitleCollectionViewCell.xib */; };
+		ACEF43F8254578D3007DA46B /* NewRegimentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEF43F6254578D3007DA46B /* NewRegimentCollectionViewCell.swift */; };
+		ACEF43F9254578D3007DA46B /* NewRegimentCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACEF43F7254578D3007DA46B /* NewRegimentCollectionViewCell.xib */; };
+		ACEF43FF25457901007DA46B /* NewPlayerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEF43FD25457901007DA46B /* NewPlayerCollectionViewCell.swift */; };
+		ACEF440025457901007DA46B /* NewPlayerCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACEF43FE25457901007DA46B /* NewPlayerCollectionViewCell.xib */; };
+		ACEF44032545791F007DA46B /* NewSquadCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEF44012545791F007DA46B /* NewSquadCollectionViewCell.swift */; };
+		ACEF44042545791F007DA46B /* NewSquadCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACEF44022545791F007DA46B /* NewSquadCollectionViewCell.xib */; };
+		EC530179767AA5CDAFB0E7C6 /* Pods_RandomWarzone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 985821307CBB08749F43CA61 /* Pods_RandomWarzone.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1CFF4AD8D14F5634E98B2C5F /* Pods-RandomWarzone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RandomWarzone.debug.xcconfig"; path = "Target Support Files/Pods-RandomWarzone/Pods-RandomWarzone.debug.xcconfig"; sourceTree = "<group>"; };
+		8901F5B4686D24E69334D070 /* Pods-RandomWarzone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RandomWarzone.release.xcconfig"; path = "Target Support Files/Pods-RandomWarzone/Pods-RandomWarzone.release.xcconfig"; sourceTree = "<group>"; };
+		985821307CBB08749F43CA61 /* Pods_RandomWarzone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RandomWarzone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC295DBE2531AC5D00D7BA6A /* AssaultRifles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssaultRifles.swift; sourceTree = "<group>"; };
+		AC2F6FC02547288000A629C3 /* InvitesCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitesCollectionViewController.swift; sourceTree = "<group>"; };
+		AC2F6FC3254732C300A629C3 /* EventsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsCollectionViewController.swift; sourceTree = "<group>"; };
+		AC2F6FC5254734A400A629C3 /* EventsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsCollectionViewCell.swift; sourceTree = "<group>"; };
+		AC2F6FC6254734A400A629C3 /* EventsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventsCollectionViewCell.xib; sourceTree = "<group>"; };
+		AC444AF125418F5700690A5D /* Squad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Squad.swift; sourceTree = "<group>"; };
+		AC444AF32541A9DF00690A5D /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
+		AC444AF52541AA6700690A5D /* FriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendViewController.swift; sourceTree = "<group>"; };
+		AC444AF72541AA7300690A5D /* RegimentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegimentViewController.swift; sourceTree = "<group>"; };
+		AC444AFA2541AC7600690A5D /* GamerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamerCollectionViewCell.swift; sourceTree = "<group>"; };
+		AC444AFB2541AC7600690A5D /* GamerCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GamerCollectionViewCell.xib; sourceTree = "<group>"; };
 		AC473539253449A00063594C /* TacticalAndLethal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TacticalAndLethal.swift; sourceTree = "<group>"; };
 		AC47353B25344E860063594C /* TacticalCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TacticalCollectionViewCell.swift; sourceTree = "<group>"; };
 		AC47353C25344E860063594C /* TacticalCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TacticalCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -70,7 +118,6 @@
 		ACA5E9DF25309D80003A9070 /* RandomWarzone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RandomWarzone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACA5E9E225309D80003A9070 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ACA5E9E425309D80003A9070 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		ACA5E9E625309D80003A9070 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		ACA5E9E925309D80003A9070 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		ACA5E9EC25309D80003A9070 /* RandomWarzone.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RandomWarzone.xcdatamodel; sourceTree = "<group>"; };
 		ACA5E9EE25309D86003A9070 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -85,11 +132,36 @@
 		ACA5EA082530B94A003A9070 /* LethalCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LethalCollectionViewCell.xib; sourceTree = "<group>"; };
 		ACA5EA0B2530BF67003A9070 /* attachmentCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = attachmentCollectionViewCell.swift; sourceTree = "<group>"; };
 		ACA5EA0C2530BF67003A9070 /* attachmentCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = attachmentCollectionViewCell.xib; sourceTree = "<group>"; };
+		ACAE439B2546E8E300EBBF72 /* AddNewSquadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewSquadViewController.swift; sourceTree = "<group>"; };
+		ACAE439D2546EA9D00EBBF72 /* addedCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addedCollectionViewCell.swift; sourceTree = "<group>"; };
+		ACAE439E2546EA9D00EBBF72 /* addedCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = addedCollectionViewCell.xib; sourceTree = "<group>"; };
+		ACAE43A22546EAC100EBBF72 /* friendsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = friendsCollectionViewCell.swift; sourceTree = "<group>"; };
+		ACAE43A32546EAC100EBBF72 /* friendsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = friendsCollectionViewCell.xib; sourceTree = "<group>"; };
+		ACAF811C2545839B007398A6 /* AddNewItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewItemViewController.swift; sourceTree = "<group>"; };
+		ACAF811E2545859D007398A6 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		ACAF812125459E5C007398A6 /* LoginCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCollectionViewCell.swift; sourceTree = "<group>"; };
+		ACAF812225459E5C007398A6 /* LoginCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginCollectionViewCell.xib; sourceTree = "<group>"; };
+		ACAF812525459EE8007398A6 /* SignUpCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpCollectionViewCell.swift; sourceTree = "<group>"; };
+		ACAF812625459EE8007398A6 /* SignUpCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignUpCollectionViewCell.xib; sourceTree = "<group>"; };
+		ACAF812A2545E661007398A6 /* FIRAuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FIRAuthenticationManager.swift; sourceTree = "<group>"; };
+		ACAF812D25462083007398A6 /* protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = protocols.swift; sourceTree = "<group>"; };
 		ACE404DF254074D100CB5F20 /* PlayerCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerCollectionReusableView.swift; sourceTree = "<group>"; };
 		ACE404E0254074D100CB5F20 /* PlayerCollectionReusableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlayerCollectionReusableView.xib; sourceTree = "<group>"; };
 		ACE404E325407D0D00CB5F20 /* RecentGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentGameViewController.swift; sourceTree = "<group>"; };
 		ACE404E62540979C00CB5F20 /* MemberCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberCollectionViewCell.swift; sourceTree = "<group>"; };
 		ACE404E72540979C00CB5F20 /* MemberCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MemberCollectionViewCell.xib; sourceTree = "<group>"; };
+		ACE404EA25409D7A00CB5F20 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		ACE404EE2540A28B00CB5F20 /* FIRDatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FIRDatabaseManager.swift; sourceTree = "<group>"; };
+		ACEF43ED25447805007DA46B /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		ACEF43EF25449B44007DA46B /* AddNewCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewCollectionViewController.swift; sourceTree = "<group>"; };
+		ACEF43F22545742E007DA46B /* NewTitleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTitleCollectionViewCell.swift; sourceTree = "<group>"; };
+		ACEF43F32545742E007DA46B /* NewTitleCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewTitleCollectionViewCell.xib; sourceTree = "<group>"; };
+		ACEF43F6254578D3007DA46B /* NewRegimentCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewRegimentCollectionViewCell.swift; sourceTree = "<group>"; };
+		ACEF43F7254578D3007DA46B /* NewRegimentCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewRegimentCollectionViewCell.xib; sourceTree = "<group>"; };
+		ACEF43FD25457901007DA46B /* NewPlayerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPlayerCollectionViewCell.swift; sourceTree = "<group>"; };
+		ACEF43FE25457901007DA46B /* NewPlayerCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewPlayerCollectionViewCell.xib; sourceTree = "<group>"; };
+		ACEF44012545791F007DA46B /* NewSquadCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSquadCollectionViewCell.swift; sourceTree = "<group>"; };
+		ACEF44022545791F007DA46B /* NewSquadCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewSquadCollectionViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,19 +169,40 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC530179767AA5CDAFB0E7C6 /* Pods_RandomWarzone.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4EF185B7DF9C816D70748B43 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				985821307CBB08749F43CA61 /* Pods_RandomWarzone.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		56537ABFB4D3C47CA2B33042 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1CFF4AD8D14F5634E98B2C5F /* Pods-RandomWarzone.debug.xcconfig */,
+				8901F5B4686D24E69334D070 /* Pods-RandomWarzone.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		AC295DBB2531AA4A00D7BA6A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				ACA5E9F92530B7EC003A9070 /* GameCollectionViewController.swift */,
-				ACA5E9E625309D80003A9070 /* ViewController.swift */,
-				AC8B02D3253DB03100CCDEA4 /* PlayerSelectionViewController.swift */,
-				ACE404E325407D0D00CB5F20 /* RecentGameViewController.swift */,
+				AC2F6FC2254732A100A629C3 /* EventsAndEasterEggs */,
+				ACAE439A2546E8C100EBBF72 /* Other */,
+				ACAE43992546E8B500EBBF72 /* Login */,
+				ACAE43982546E89F00EBBF72 /* MightGetDeleted */,
+				ACAE43972546E89200EBBF72 /* Main */,
+				ACAE43962546E88300EBBF72 /* AddNewControllers */,
+				AC2F6FC02547288000A629C3 /* InvitesCollectionViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -117,9 +210,15 @@
 		AC295DBC2531AA6100D7BA6A /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				ACAE43A12546EAAF00EBBF72 /* Friends */,
+				ACAF812025459E40007398A6 /* Login */,
+				ACEF43F125449B68007DA46B /* AddNew */,
+				AC444AF92541ABED00690A5D /* Favorite */,
 				ACE404E52540977A00CB5F20 /* RecentGame */,
 				AC8B02DA253DB1CC00CCDEA4 /* Loadout */,
 				AC8B02D9253DB1C000CCDEA4 /* Player */,
+				AC2F6FC5254734A400A629C3 /* EventsCollectionViewCell.swift */,
+				AC2F6FC6254734A400A629C3 /* EventsCollectionViewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -135,10 +234,45 @@
 			path = DataObjects;
 			sourceTree = "<group>";
 		};
+		AC2F6FC2254732A100A629C3 /* EventsAndEasterEggs */ = {
+			isa = PBXGroup;
+			children = (
+				AC2F6FC3254732C300A629C3 /* EventsCollectionViewController.swift */,
+			);
+			path = EventsAndEasterEggs;
+			sourceTree = "<group>";
+		};
+		AC444AF025418F4500690A5D /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				AC444AF125418F5700690A5D /* Squad.swift */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		AC444AF92541ABED00690A5D /* Favorite */ = {
+			isa = PBXGroup;
+			children = (
+				AC444AFA2541AC7600690A5D /* GamerCollectionViewCell.swift */,
+				AC444AFB2541AC7600690A5D /* GamerCollectionViewCell.xib */,
+			);
+			path = Favorite;
+			sourceTree = "<group>";
+		};
+		AC444AFE25432B5F00690A5D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		AC52266F253EC7CE00E6B0C0 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
-				AC522670253EC7E100E6B0C0 /* RandomManager.swift */,
+				ACAF81292545E648007398A6 /* FIRAuthenticationManager */,
+				ACEF43EC254477EA007DA46B /* CoreDataManagers */,
+				ACE404ED2540A27300CB5F20 /* FIRDatabase */,
+				ACE404EC2540A26D00CB5F20 /* Randomize */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -224,6 +358,8 @@
 			children = (
 				ACA5E9E125309D80003A9070 /* RandomWarzone */,
 				ACA5E9E025309D80003A9070 /* Products */,
+				56537ABFB4D3C47CA2B33042 /* Pods */,
+				4EF185B7DF9C816D70748B43 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -238,6 +374,9 @@
 		ACA5E9E125309D80003A9070 /* RandomWarzone */ = {
 			isa = PBXGroup;
 			children = (
+				ACAF812C25462075007398A6 /* Protocols */,
+				AC444AFE25432B5F00690A5D /* Model */,
+				AC444AF025418F4500690A5D /* Classes */,
 				AC52266F253EC7CE00E6B0C0 /* Managers */,
 				AC295DBD2531AC3D00D7BA6A /* DataObjects */,
 				AC295DBC2531AA6100D7BA6A /* Cells */,
@@ -248,9 +387,91 @@
 				ACA5E9EE25309D86003A9070 /* Assets.xcassets */,
 				ACA5E9F025309D86003A9070 /* LaunchScreen.storyboard */,
 				ACA5E9F325309D86003A9070 /* Info.plist */,
+				ACE404EA25409D7A00CB5F20 /* GoogleService-Info.plist */,
 				ACA5E9EB25309D80003A9070 /* RandomWarzone.xcdatamodeld */,
 			);
 			path = RandomWarzone;
+			sourceTree = "<group>";
+		};
+		ACAE43962546E88300EBBF72 /* AddNewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				ACEF43EF25449B44007DA46B /* AddNewCollectionViewController.swift */,
+				ACAF811C2545839B007398A6 /* AddNewItemViewController.swift */,
+				ACAE439B2546E8E300EBBF72 /* AddNewSquadViewController.swift */,
+			);
+			path = AddNewControllers;
+			sourceTree = "<group>";
+		};
+		ACAE43972546E89200EBBF72 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				AC8B02D3253DB03100CCDEA4 /* PlayerSelectionViewController.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		ACAE43982546E89F00EBBF72 /* MightGetDeleted */ = {
+			isa = PBXGroup;
+			children = (
+				ACA5E9F92530B7EC003A9070 /* GameCollectionViewController.swift */,
+				ACE404E325407D0D00CB5F20 /* RecentGameViewController.swift */,
+			);
+			path = MightGetDeleted;
+			sourceTree = "<group>";
+		};
+		ACAE43992546E8B500EBBF72 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				ACAF811E2545859D007398A6 /* LoginViewController.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		ACAE439A2546E8C100EBBF72 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				AC444AF32541A9DF00690A5D /* FavoriteViewController.swift */,
+				AC444AF52541AA6700690A5D /* FriendViewController.swift */,
+				AC444AF72541AA7300690A5D /* RegimentViewController.swift */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
+		ACAE43A12546EAAF00EBBF72 /* Friends */ = {
+			isa = PBXGroup;
+			children = (
+				ACAE43A22546EAC100EBBF72 /* friendsCollectionViewCell.swift */,
+				ACAE43A32546EAC100EBBF72 /* friendsCollectionViewCell.xib */,
+			);
+			path = Friends;
+			sourceTree = "<group>";
+		};
+		ACAF812025459E40007398A6 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				ACAF812125459E5C007398A6 /* LoginCollectionViewCell.swift */,
+				ACAF812225459E5C007398A6 /* LoginCollectionViewCell.xib */,
+				ACAF812525459EE8007398A6 /* SignUpCollectionViewCell.swift */,
+				ACAF812625459EE8007398A6 /* SignUpCollectionViewCell.xib */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		ACAF81292545E648007398A6 /* FIRAuthenticationManager */ = {
+			isa = PBXGroup;
+			children = (
+				ACAF812A2545E661007398A6 /* FIRAuthenticationManager.swift */,
+			);
+			path = FIRAuthenticationManager;
+			sourceTree = "<group>";
+		};
+		ACAF812C25462075007398A6 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				ACAF812D25462083007398A6 /* protocols.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		ACE404E52540977A00CB5F20 /* RecentGame */ = {
@@ -262,6 +483,71 @@
 			path = RecentGame;
 			sourceTree = "<group>";
 		};
+		ACE404EC2540A26D00CB5F20 /* Randomize */ = {
+			isa = PBXGroup;
+			children = (
+				AC522670253EC7E100E6B0C0 /* RandomManager.swift */,
+			);
+			path = Randomize;
+			sourceTree = "<group>";
+		};
+		ACE404ED2540A27300CB5F20 /* FIRDatabase */ = {
+			isa = PBXGroup;
+			children = (
+				ACE404EE2540A28B00CB5F20 /* FIRDatabaseManager.swift */,
+			);
+			path = FIRDatabase;
+			sourceTree = "<group>";
+		};
+		ACEF43EC254477EA007DA46B /* CoreDataManagers */ = {
+			isa = PBXGroup;
+			children = (
+				ACEF43ED25447805007DA46B /* CoreDataManager.swift */,
+			);
+			path = CoreDataManagers;
+			sourceTree = "<group>";
+		};
+		ACEF43F125449B68007DA46B /* AddNew */ = {
+			isa = PBXGroup;
+			children = (
+				ACEF43FC254578F0007DA46B /* newPlayer */,
+				ACEF43FB254578E9007DA46B /* NewSquad */,
+				ACEF43FA254578D8007DA46B /* NewRegiment */,
+				ACEF43F22545742E007DA46B /* NewTitleCollectionViewCell.swift */,
+				ACEF43F32545742E007DA46B /* NewTitleCollectionViewCell.xib */,
+			);
+			path = AddNew;
+			sourceTree = "<group>";
+		};
+		ACEF43FA254578D8007DA46B /* NewRegiment */ = {
+			isa = PBXGroup;
+			children = (
+				ACEF43F6254578D3007DA46B /* NewRegimentCollectionViewCell.swift */,
+				ACEF43F7254578D3007DA46B /* NewRegimentCollectionViewCell.xib */,
+			);
+			path = NewRegiment;
+			sourceTree = "<group>";
+		};
+		ACEF43FB254578E9007DA46B /* NewSquad */ = {
+			isa = PBXGroup;
+			children = (
+				ACEF44012545791F007DA46B /* NewSquadCollectionViewCell.swift */,
+				ACEF44022545791F007DA46B /* NewSquadCollectionViewCell.xib */,
+				ACAE439D2546EA9D00EBBF72 /* addedCollectionViewCell.swift */,
+				ACAE439E2546EA9D00EBBF72 /* addedCollectionViewCell.xib */,
+			);
+			path = NewSquad;
+			sourceTree = "<group>";
+		};
+		ACEF43FC254578F0007DA46B /* newPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				ACEF43FD25457901007DA46B /* NewPlayerCollectionViewCell.swift */,
+				ACEF43FE25457901007DA46B /* NewPlayerCollectionViewCell.xib */,
+			);
+			path = newPlayer;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -269,9 +555,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = ACA5E9F625309D86003A9070 /* Build configuration list for PBXNativeTarget "RandomWarzone" */;
 			buildPhases = (
+				F172B53704DA5AB13F2E4897 /* [CP] Check Pods Manifest.lock */,
 				ACA5E9DB25309D80003A9070 /* Sources */,
 				ACA5E9DC25309D80003A9070 /* Frameworks */,
 				ACA5E9DD25309D80003A9070 /* Resources */,
+				2677D2DC3D902EE06FAB8A0D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -322,52 +610,128 @@
 			files = (
 				ACE404E2254074D100CB5F20 /* PlayerCollectionReusableView.xib in Resources */,
 				ACA5E9F225309D86003A9070 /* LaunchScreen.storyboard in Resources */,
+				ACAE43A52546EAC100EBBF72 /* friendsCollectionViewCell.xib in Resources */,
+				ACAF812425459E5C007398A6 /* LoginCollectionViewCell.xib in Resources */,
 				ACA5EA022530B8E6003A9070 /* WeaponCollectionViewCell.xib in Resources */,
 				ACE404E92540979C00CB5F20 /* MemberCollectionViewCell.xib in Resources */,
+				AC444AFD2541AC7600690A5D /* GamerCollectionViewCell.xib in Resources */,
+				ACAF812825459EE8007398A6 /* SignUpCollectionViewCell.xib in Resources */,
 				ACA5EA0A2530B94A003A9070 /* LethalCollectionViewCell.xib in Resources */,
+				ACE404EB25409D7A00CB5F20 /* GoogleService-Info.plist in Resources */,
 				AC47353E25344E860063594C /* TacticalCollectionViewCell.xib in Resources */,
 				ACA5E9EF25309D86003A9070 /* Assets.xcassets in Resources */,
 				ACA5E9EA25309D80003A9070 /* Main.storyboard in Resources */,
 				ACA5EA0E2530BF67003A9070 /* attachmentCollectionViewCell.xib in Resources */,
+				ACAE43A02546EA9D00EBBF72 /* addedCollectionViewCell.xib in Resources */,
 				ACA5EA062530B907003A9070 /* PerksCollectionViewCell.xib in Resources */,
+				ACEF43F9254578D3007DA46B /* NewRegimentCollectionViewCell.xib in Resources */,
+				ACEF44042545791F007DA46B /* NewSquadCollectionViewCell.xib in Resources */,
+				ACEF43F52545742E007DA46B /* NewTitleCollectionViewCell.xib in Resources */,
+				ACEF440025457901007DA46B /* NewPlayerCollectionViewCell.xib in Resources */,
 				AC8B02D8253DB12600CCDEA4 /* PlayerCollectionViewCell.xib in Resources */,
+				AC2F6FC8254734A400A629C3 /* EventsCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2677D2DC3D902EE06FAB8A0D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RandomWarzone/Pods-RandomWarzone-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RandomWarzone/Pods-RandomWarzone-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RandomWarzone/Pods-RandomWarzone-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F172B53704DA5AB13F2E4897 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-RandomWarzone-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		ACA5E9DB25309D80003A9070 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ACAF811F2545859E007398A6 /* LoginViewController.swift in Sources */,
 				ACA410C8253208D000D0A7FC /* Shotguns.swift in Sources */,
 				ACA410CC253208F100D0A7FC /* MarksmanRifles.swift in Sources */,
 				AC595773253329C300C3D395 /* Loadout.swift in Sources */,
 				ACA5EA052530B907003A9070 /* PerksCollectionViewCell.swift in Sources */,
+				ACAF811D2545839B007398A6 /* AddNewItemViewController.swift in Sources */,
+				ACEF44032545791F007DA46B /* NewSquadCollectionViewCell.swift in Sources */,
 				ACA410CE253208FB00D0A7FC /* SniperRifles.swift in Sources */,
 				ACA5EA012530B8E6003A9070 /* WeaponCollectionViewCell.swift in Sources */,
+				ACE404EF2540A28B00CB5F20 /* FIRDatabaseManager.swift in Sources */,
 				AC47354025346E0F0063594C /* Handguns.swift in Sources */,
 				AC47353A253449A00063594C /* TacticalAndLethal.swift in Sources */,
 				ACE404E82540979C00CB5F20 /* MemberCollectionViewCell.swift in Sources */,
+				ACEF43F42545742E007DA46B /* NewTitleCollectionViewCell.swift in Sources */,
 				AC8B02D4253DB03100CCDEA4 /* PlayerSelectionViewController.swift in Sources */,
+				AC444AFC2541AC7600690A5D /* GamerCollectionViewCell.swift in Sources */,
 				AC522671253EC7E100E6B0C0 /* RandomManager.swift in Sources */,
+				ACAE439F2546EA9D00EBBF72 /* addedCollectionViewCell.swift in Sources */,
+				AC444AF82541AA7300690A5D /* RegimentViewController.swift in Sources */,
+				AC444AF62541AA6700690A5D /* FriendViewController.swift in Sources */,
 				ACA410C6253208B900D0A7FC /* SMGs.swift in Sources */,
 				ACE404E425407D0D00CB5F20 /* RecentGameViewController.swift in Sources */,
+				AC444AF225418F5700690A5D /* Squad.swift in Sources */,
+				AC2F6FC12547288000A629C3 /* InvitesCollectionViewController.swift in Sources */,
 				ACA5EA092530B94A003A9070 /* LethalCollectionViewCell.swift in Sources */,
+				AC2F6FC4254732C300A629C3 /* EventsCollectionViewController.swift in Sources */,
+				ACAF812E25462083007398A6 /* protocols.swift in Sources */,
 				ACE404E1254074D100CB5F20 /* PlayerCollectionReusableView.swift in Sources */,
+				ACAE43A42546EAC100EBBF72 /* friendsCollectionViewCell.swift in Sources */,
 				ACA410C4253208AA00D0A7FC /* Perks.swift in Sources */,
-				ACA5E9E725309D80003A9070 /* ViewController.swift in Sources */,
+				ACAF812325459E5C007398A6 /* LoginCollectionViewCell.swift in Sources */,
 				ACA410D02532090600D0A7FC /* Melees.swift in Sources */,
+				ACAE439C2546E8E300EBBF72 /* AddNewSquadViewController.swift in Sources */,
+				ACEF43FF25457901007DA46B /* NewPlayerCollectionViewCell.swift in Sources */,
+				ACEF43F8254578D3007DA46B /* NewRegimentCollectionViewCell.swift in Sources */,
 				ACA5E9ED25309D80003A9070 /* RandomWarzone.xcdatamodeld in Sources */,
 				ACA5EA0D2530BF67003A9070 /* attachmentCollectionViewCell.swift in Sources */,
 				AC47353D25344E860063594C /* TacticalCollectionViewCell.swift in Sources */,
+				AC444AF42541A9DF00690A5D /* FavoriteViewController.swift in Sources */,
 				AC295DBF2531AC5D00D7BA6A /* AssaultRifles.swift in Sources */,
 				ACA5E9E325309D80003A9070 /* AppDelegate.swift in Sources */,
 				ACA5E9FA2530B7EC003A9070 /* GameCollectionViewController.swift in Sources */,
 				ACA410CA253208E500D0A7FC /* LMGs.swift in Sources */,
+				ACAF812725459EE8007398A6 /* SignUpCollectionViewCell.swift in Sources */,
+				AC2F6FC7254734A400A629C3 /* EventsCollectionViewCell.swift in Sources */,
 				AC8B02D7253DB12600CCDEA4 /* PlayerCollectionViewCell.swift in Sources */,
 				ACA5E9E525309D80003A9070 /* SceneDelegate.swift in Sources */,
+				ACAF812B2545E661007398A6 /* FIRAuthenticationManager.swift in Sources */,
+				ACEF43F025449B44007DA46B /* AddNewCollectionViewController.swift in Sources */,
+				ACEF43EE25447805007DA46B /* CoreDataManager.swift in Sources */,
 				AC522674253EE36700E6B0C0 /* Weapons.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -510,6 +874,7 @@
 		};
 		ACA5E9F725309D86003A9070 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1CFF4AD8D14F5634E98B2C5F /* Pods-RandomWarzone.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -528,6 +893,7 @@
 		};
 		ACA5E9F825309D86003A9070 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8901F5B4686D24E69334D070 /* Pods-RandomWarzone.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

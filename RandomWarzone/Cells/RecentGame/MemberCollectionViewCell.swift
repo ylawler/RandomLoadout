@@ -30,8 +30,8 @@ class MemberCollectionViewCell: UICollectionViewCell {
         self.memberImageView.clipsToBounds = true
     }
     
-    func configure(member: Friend) {
-        self.memberImageView.image = UIImage(systemName: member.imageName)
+    func configure(gamer: Gamer) {
+        self.memberImageView.image = UIImage(systemName: gamer.imageName)
     }
     
     static let identifier = "MemberCollectionViewCellId"

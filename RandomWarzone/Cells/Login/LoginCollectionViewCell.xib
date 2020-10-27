@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="LoginCollectionViewCellId" id="gTV-IL-0wX" customClass="LoginCollectionViewCell" customModule="RandomWarzone" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="368" height="468"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="368" height="468"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UUc-j4-Oou">
+                        <rect key="frame" x="46" y="20" width="276" height="42"/>
+                        <color key="tintColor" red="0.1221655235" green="0.20694416760000001" blue="0.26527664070000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="42" id="ehu-TH-2xM"/>
+                        </constraints>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <textInputTraits key="textInputTraits"/>
+                    </textField>
+                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="y7o-fg-m3q">
+                        <rect key="frame" x="46" y="74" width="276" height="42"/>
+                        <color key="tintColor" red="0.1221655235" green="0.20694416760000001" blue="0.26527664070000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <textInputTraits key="textInputTraits"/>
+                    </textField>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="THh-bc-rdh">
+                        <rect key="frame" x="115" y="148" width="138" height="32"/>
+                        <color key="backgroundColor" red="0.1242999449" green="0.2214960336" blue="0.29213580830000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="32" id="2Se-72-ijx"/>
+                        </constraints>
+                        <state key="normal" title="Login">
+                            <color key="titleColor" cocoaTouchSystemColor="lightTextColor"/>
+                        </state>
+                        <connections>
+                            <action selector="loginButtonTapped:" destination="gTV-IL-0wX" eventType="touchUpInside" id="YTK-RT-jdA"/>
+                        </connections>
+                    </button>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="THh-bc-rdh" firstAttribute="width" secondItem="y7o-fg-m3q" secondAttribute="width" multiplier="0.5" id="AgG-2F-Xbc"/>
+                <constraint firstItem="THh-bc-rdh" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="XYe-tt-Dc4"/>
+                <constraint firstItem="y7o-fg-m3q" firstAttribute="width" secondItem="UUc-j4-Oou" secondAttribute="width" id="a5N-6i-dEs"/>
+                <constraint firstItem="UUc-j4-Oou" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="b73-14-mOx"/>
+                <constraint firstItem="UUc-j4-Oou" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" multiplier="0.75" id="c7f-mp-Mw8"/>
+                <constraint firstItem="y7o-fg-m3q" firstAttribute="top" secondItem="UUc-j4-Oou" secondAttribute="bottom" constant="12" id="gF9-d0-3cS"/>
+                <constraint firstItem="y7o-fg-m3q" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="ijH-Bh-RKQ"/>
+                <constraint firstItem="THh-bc-rdh" firstAttribute="top" secondItem="y7o-fg-m3q" secondAttribute="bottom" constant="32" id="pnk-Oj-Slh"/>
+                <constraint firstItem="UUc-j4-Oou" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="20" id="rWg-xp-XQp"/>
+                <constraint firstItem="y7o-fg-m3q" firstAttribute="height" secondItem="UUc-j4-Oou" secondAttribute="height" id="zIY-Es-3yO"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <size key="customSize" width="368" height="468"/>
+            <connections>
+                <outlet property="loginButton" destination="THh-bc-rdh" id="47u-gk-41l"/>
+                <outlet property="passwordTextField" destination="y7o-fg-m3q" id="f18-k5-3Qc"/>
+                <outlet property="usernameTextField" destination="UUc-j4-Oou" id="wYd-JB-4CK"/>
+            </connections>
+            <point key="canvasLocation" x="362.31884057971018" y="81.696428571428569"/>
+        </collectionViewCell>
+    </objects>
+</document>

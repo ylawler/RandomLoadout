@@ -44,7 +44,7 @@ public class weapon {
             
             var updatedAttachmentList = ["Muzzle", "Barrel", "Laser", "Optic", "Stock", "Trigger Action", "Underbarrel", "Ammunition", "Rear Grip", "Perk"]
             
-            for i in 1...numberOfRandomAttachments {
+            for i in 1..<numberOfRandomAttachments {
                 print("attachment no. : \(i) / \(numberOfRandomAttachments)")
                 var randomAttachmentKey = ""
                 var newAttachmentFound = false

@@ -11,10 +11,17 @@ import UIKit
 class PlayerCollectionReusableView: UICollectionReusableView {
     
     @IBOutlet weak var headerTitleLabel: UILabel!
-
+    @IBOutlet weak var headerTitleBackground: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+//        self.headerTitleBackground.layer.cornerRadius = 3
+        self.headerTitleBackground.createShadow(color: .black, radius: 5, opacity: 1)
     }
     
     func configure(title: String) {
