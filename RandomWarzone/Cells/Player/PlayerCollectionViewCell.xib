@@ -24,13 +24,13 @@
                             <constraint firstAttribute="width" secondItem="Jbp-Qe-EER" secondAttribute="height" multiplier="1:1" id="cgT-Cp-6NN"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DQZ-O3-jpJ">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DQZ-O3-jpJ">
                         <rect key="frame" x="130" y="60" width="311" height="27"/>
                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hu6-0Z-Llp">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hu6-0Z-Llp">
                         <rect key="frame" x="130" y="15" width="311" height="45"/>
                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="21"/>
                         <nil key="textColor"/>
@@ -38,14 +38,14 @@
                     </label>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="252" image="chevron.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="eg5-XJ-9pD">
                         <rect key="frame" x="453" y="52" width="20" height="16.5"/>
-                        <color key="tintColor" red="0.1221655235" green="0.20694416760000001" blue="0.26527664070000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="tintColor" red="0.95849102740000003" green="0.3940945864" blue="0.18387433889999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="eg5-XJ-9pD" secondAttribute="height" multiplier="1:1" id="7Qt-yr-b4u"/>
                         </constraints>
                     </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="42A-id-0DH">
                         <rect key="frame" x="110" y="119" width="363" height="1"/>
-                        <color key="backgroundColor" red="0.1221655235" green="0.20694416760000001" blue="0.26527664070000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1" id="4df-Mo-Yc3"/>
                         </constraints>
@@ -63,7 +63,6 @@
                     </label>
                 </subviews>
             </view>
-            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="eg5-XJ-9pD" secondAttribute="trailing" constant="20" id="1tO-Xw-WTf"/>
                 <constraint firstItem="1m6-48-dqp" firstAttribute="bottom" secondItem="Jbp-Qe-EER" secondAttribute="bottom" id="4gv-UC-U6l"/>

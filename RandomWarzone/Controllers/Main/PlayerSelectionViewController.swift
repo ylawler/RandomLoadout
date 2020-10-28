@@ -15,6 +15,10 @@ import FirebaseAuth
 
 class PlayerSelectionViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     
+    
+    
+    
+    
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var newItemButton: UIBarButtonItem!
     @IBOutlet weak var notificationButton: UIBarButtonItem!
@@ -26,6 +30,7 @@ class PlayerSelectionViewController: UIViewController, UICollectionViewDelegate,
     
     var ref: DatabaseReference?
     
+    var playerIds: [String] = []
     var players: [Player] = []
     var squads: [Squad] = []
     var regiments: [Regiment] = []
@@ -43,19 +48,14 @@ class PlayerSelectionViewController: UIViewController, UICollectionViewDelegate,
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        
-        
         checkForUserAndLoadData()
         
-        
-        // Add listener to firebase for invitations
-        FDM?.observeForInvites { (inviteFound) in
-            if inviteFound {
-                print("INVITES FOUND")
-            }
-        }
+//        // Add listener to firebase for invitations
+//        FDM?.observeForInvites { (inviteFound) in
+//            if inviteFound {
+//                print("INVITES FOUND")
+//            }
+//        }
         
         self.notificationButton.tintColor = .orange
         
@@ -71,13 +71,14 @@ class PlayerSelectionViewController: UIViewController, UICollectionViewDelegate,
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.refreshData()
+        self.checkForUserAndLoadData()
+//        self.refreshData()
     }
     
     
     
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
@@ -85,6 +86,7 @@ class PlayerSelectionViewController: UIViewController, UICollectionViewDelegate,
         if segue.identifier == "searchNewSegue" {
             let dest = segue.destination as! AddNewItemViewController
             dest.searchCriteria = newItem
+            dest.FDM = self.FDM
         } else if segue.identifier == "addNewItemSegue" {
             let dest = segue.destination as! AddNewCollectionViewController
             dest.newItem = newItem
@@ -92,14 +94,14 @@ class PlayerSelectionViewController: UIViewController, UICollectionViewDelegate,
             let dest = segue.destination as! AddNewSquadViewController
             dest.Friends = self.players
             dest.FDM = self.FDM
-//            dest.newItem = newItem
+            //            dest.newItem = newItem
         } else if segue.identifier == "showInviteSegue" {
             let dest = segue.destination as! InvitesCollectionViewController
             dest.setInvites(PlayerInvites: self.playerInvites, RegimentInvites: self.regimentInvites, SquadInvitess: self.squadInvites)
         }
         
         
-         
+        
     }
     
     
@@ -135,10 +137,18 @@ class PlayerSelectionViewController: UIViewController, UICollectionViewDelegate,
         case 1:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PlayerCollectionViewCell.identifier, for: indexPath) as! PlayerCollectionViewCell
             cell.configure(squad: self.squads[indexPath.item])
-        return cell
+            return cell
         case 2:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PlayerCollectionViewCell.identifier, for: indexPath) as! PlayerCollectionViewCell
+//            cell.delegate = self
+//            cell.item = indexPath.item
+//            cell.configureWithId(id: self.playerIds[indexPath.item], databaseManager: self.FDM!, CDM: self.CDM)
+            
             cell.configure(player: self.players[indexPath.item])
+//            cell.configureWithId(id: self.playerIds[indexPath.item], databaseManager: self.FDM!, CDM: self.CDM)
+//            cell.configureWithId(id: self.playerIds[indexPath.item], databaseManager: self.FDM!, CDM: self.CDM)
+            
+            
             return cell
         default:
             return UICollectionViewCell()
@@ -172,28 +182,28 @@ class PlayerSelectionViewController: UIViewController, UICollectionViewDelegate,
         
         return CGSize(width: collectionView.frame.width, height: headerHeight)
         
-//        switch section {
-//        case 0:
-//            if self.regiments.count == 0 {
-//                return .zero
-//            } else {
-//                return CGSize(width: collectionView.frame.width, height: headerHeight)
-//            }
-//        case 1:
-//            if self.squads.count == 0 {
-//                return .zero
-//            } else {
-//                return CGSize(width: collectionView.frame.width, height: headerHeight)
-//            }
-//        case 2:
-//            if self.players.count == 0 {
-//                return .zero
-//            } else {
-//                return CGSize(width: collectionView.frame.width, height: headerHeight)
-//            }
-//        default:
-//            return .zero
-//        }
+        //        switch section {
+        //        case 0:
+        //            if self.regiments.count == 0 {
+        //                return .zero
+        //            } else {
+        //                return CGSize(width: collectionView.frame.width, height: headerHeight)
+        //            }
+        //        case 1:
+        //            if self.squads.count == 0 {
+        //                return .zero
+        //            } else {
+        //                return CGSize(width: collectionView.frame.width, height: headerHeight)
+        //            }
+        //        case 2:
+        //            if self.players.count == 0 {
+        //                return .zero
+        //            } else {
+        //                return CGSize(width: collectionView.frame.width, height: headerHeight)
+        //            }
+        //        default:
+        //            return .zero
+        //        }
         
         
         
@@ -221,11 +231,20 @@ class PlayerSelectionViewController: UIViewController, UICollectionViewDelegate,
     @IBAction func leftBarButtonTapped(_ sender: UIBarButtonItem) {
         FIRAuthManager.shared.signOutUser { (signOutSuccessful) in
             if signOutSuccessful {
+                self.clearData()
                 self.checkForUserAndLoadData()
             }
         }
     }
     
+    func clearData() {
+        self.FDM = nil
+        self.CDM.deleteAll()
+        self.players = []
+        self.regiments = []
+        self.squads = []
+        self.collectionView.reloadData()
+    }
     
     
     @IBAction func newItemButtonTapped(_ sender: UIBarButtonItem) {
@@ -263,85 +282,99 @@ class PlayerSelectionViewController: UIViewController, UICollectionViewDelegate,
         self.performSegue(withIdentifier: "showInviteSegue", sender: self)
     }
     
-
-     func filterExistingData(playersToFilter: [Player]? = nil, regimentsToFilter: [Regiment]? = nil, squadsToFilter: [Squad]? = nil) {
-         if playersToFilter != nil {
-             print(playersToFilter!)
-             for player in playersToFilter! {
-                 if !self.players.contains(player) {
-                     self.players.append(player)
-                 }
-             }
-         } else if regimentsToFilter != nil {
-             print(regimentsToFilter!)
-             for regiment in regimentsToFilter! {
-                 if !self.regiments.contains(regiment) {
-                     self.regiments.append(regiment)
-                 }
-             }
-         } else if squadsToFilter != nil {
-             print(squadsToFilter!)
-             for squad in squadsToFilter! {
-                 if !self.squads.contains(squad) {
-                     self.squads.append(squad)
-                 }
-             }
-         }
-     }
-     
-     func refreshData() {
-        FDM?.loadPlayerFriends(uid: uid, CDM: self.CDM) { (playerFriendsLoaded, players) in
-             if playerFriendsLoaded {
-                 self.addToPlayers(Players: players)
-                self.FDM?.loadPlayerSquads(uid: self.uid, CDM: self.CDM) { (playerSquadsFound, squads) in
-                     
-                     if playerSquadsFound {
-                         self.addToSquads(Squads: squads)
-                         self.collectionView.reloadData()
-                     }
-                     
-                     
-                 }
-                 
-                self.FDM?.loadPlayerRegiments(uid: self.uid, CDM: self.CDM) { (playerRegimentsFound, regiments) in
-                     
-                     if playerRegimentsFound {
-                         self.addToRegiments(Regiments: regiments)
-                         self.collectionView.reloadData()
-                     }
-                 }
-             }
-         }
-     }
-     
-     func addToPlayers(Players: [Player]) {
-         for player in Players {
-             if !self.players.contains(player) {
-                 self.players.append(player)
-             }
-         }
-     }
-     
-     func addToRegiments(Regiments: [Regiment]) {
-         for regiment in Regiments {
-             if !self.regiments.contains(regiment) {
-                 self.regiments.append(regiment)
-             }
-         }
-     }
-     
-     func addToSquads(Squads: [Squad]) {
-         for squad in Squads {
-             if !self.squads.contains(squad) {
-                 self.squads.append(squad)
-             }
-         }
-     }
     
-     
-     fileprivate func checkForUserAndLoadData() {
+    func filterExistingData(playersToFilter: [Player]? = nil, regimentsToFilter: [Regiment]? = nil, squadsToFilter: [Squad]? = nil) {
+        if playersToFilter != nil {
+            print(playersToFilter!)
+            for player in playersToFilter! {
+                if !self.players.contains(player) {
+                    self.players.append(player)
+                }
+            }
+        } else if regimentsToFilter != nil {
+            print(regimentsToFilter!)
+            for regiment in regimentsToFilter! {
+                if !self.regiments.contains(regiment) {
+                    self.regiments.append(regiment)
+                }
+            }
+        } else if squadsToFilter != nil {
+            print(squadsToFilter!)
+            for squad in squadsToFilter! {
+                if !self.squads.contains(squad) {
+                    self.squads.append(squad)
+                }
+            }
+        }
+    }
+    
+    fileprivate func loadSquads() {
+        self.FDM?.loadPlayerSquads(CDM: self.CDM) { (playerSquadsFound, squads) in
+            if playerSquadsFound {
+                self.addToSquads(Squads: squads)
+                self.collectionView.reloadData()
+            } else {
+                print("REFRESH DATA: NO SQUADS FOUND")
+            }
+        }
+    }
+    
+    fileprivate func loadRegiments() {
+        self.FDM?.loadPlayerRegiments(CDM: self.CDM) { (playerRegimentsFound, regiments) in
+            if playerRegimentsFound {
+                self.addToRegiments(Regiments: regiments)
+                self.collectionView.reloadData()
+            } else {
+                print("REFRESH DATA: NO REGIMENTS FOUND")
+            }
+        }
+    }
+    
+    fileprivate func loadFriends() {
+        FDM?.loadPlayerFriendIds(CDM: self.CDM) { (playerFriendIdsLoaded, players) in
+            if playerFriendIdsLoaded {
+                self.addToPlayers(Players: players)
+                self.collectionView.reloadData()
+            } else {
+                print("REFRESH DATA: NO PLAYERS FOUND")
+            }
+        }
+    }
+    
+    func refreshData() {
+        loadFriends()
+        loadSquads()
+        loadRegiments()
+    }
+    
+    func addToPlayers(Players: [Player]) {
+        for player in Players {
+            if !self.players.contains(player) {
+                self.players.append(player)
+            }
+        }
+    }
+    
+    func addToRegiments(Regiments: [Regiment]) {
+        for regiment in Regiments {
+            if !self.regiments.contains(regiment) {
+                self.regiments.append(regiment)
+            }
+        }
+    }
+    
+    func addToSquads(Squads: [Squad]) {
+        for squad in Squads {
+            if !self.squads.contains(squad) {
+                self.squads.append(squad)
+            }
+        }
+    }
+    
+    
+    fileprivate func checkForUserAndLoadData() {
         FIRAuthManager.shared.checkForUser { (userExists, user) in
-             if userExists {
+            if userExists {
                 if let _ = self.FDM {
                     self.loadCoreData()
                 } else {
@@ -349,14 +382,14 @@ class PlayerSelectionViewController: UIViewController, UICollectionViewDelegate,
                     self.loadCoreData()
                     
                 }
+                self.refreshData()
                 
-             } else {
-                self.CDM.deleteAll()
+            } else {
                 self.performSegue(withIdentifier: "showLoginSegue", sender: self)
-             }
-             
-         }
-     }
+            }
+            
+        }
+    }
     
     func loadCoreData() {
         self.CDM.loadCoreData { (successful, Players, Squads, Regiments) in
@@ -365,9 +398,7 @@ class PlayerSelectionViewController: UIViewController, UICollectionViewDelegate,
                 self.addToSquads(Squads: Squads!)
                 self.addToRegiments(Regiments: Regiments!)
                 
-            } else {
-               self.refreshData()
-           }
+            }
         }
     }
     

@@ -2,7 +2,7 @@
 //  Regiment+CoreDataProperties.swift
 //  
 //
-//  Created by Yannick Lawler on 26.10.20.
+//  Created by Yannick Lawler on 28.10.20.
 //
 //
 

@@ -10,6 +10,12 @@ import UIKit
 
 public let darkTheme: UIColor = UIColor(red: 63/255, green: 82/255, blue: 98/255, alpha: 1)
 
+
+//protocol PlayerCollectionViewCellDelegate {
+//    func reloadPlayer(at: Int)
+//}
+
+
 class PlayerCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var squadImageView: UIImageView!
@@ -18,7 +24,12 @@ class PlayerCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var notificationLabel: UILabel!
     
-    var numNotifications: Int = 1
+//    var numNotifications: Int = 0
+    var databaseManager: FIRDatabaseManager?
+    var CDM: CoreDataManager?
+    
+//    var delegate: PlayerCollectionViewCellDelegate?
+//    var item: Int?
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -28,18 +39,33 @@ class PlayerCollectionViewCell: UICollectionViewCell {
         self.notificationLabel.layer.borderWidth = 2
         self.notificationLabel.clipsToBounds = true
         
-        self.setNotificationLabel()
+        self.setNotificationLabel(on: false)
         self.squadImageView.tintColor = .lightGray
+        
+        
         
     }
     
-    func setNumNotifications(to: Int) {
-        self.numNotifications = to
-    }
+//    func configureWithId(id: String, databaseManager: FIRDatabaseManager, CDM: CoreDataManager) {
+//        if let del = self.delegate {
+//            databaseManager.savePlayerDetails(playerId: id, CDM: CDM) { (saved, player) in
+//                if saved {
+//                    self.configure(player: player!)
+//                    del.reloadPlayer(at: self.item!)
+//                }
+//            }
+//        }
+//    }
     
-    func setNotificationLabel() {
+    
+//    func setNumNotifications(to: Int) {
+//        self.numNotifications = to
+//        self.setNotificationLabel()
+//    }
+//
+    func setNotificationLabel(on: Bool) {
 //        self.notificationLabel.text = String(self.numNotifications)
-        self.notificationLabel.isHidden = (self.numNotifications==0)
+        self.notificationLabel.isHidden = !on
     }
     
     
@@ -59,14 +85,16 @@ class PlayerCollectionViewCell: UICollectionViewCell {
         } else if let squadToConfigure = squad {
             // setup SQuad
             imageToConfigure = UIImage(data: squadToConfigure.img!)!
-            nameToConfigure = squadToConfigure.id!
+            nameToConfigure = squadToConfigure.name!
+            self.notificationLabel.isHidden = true
             subTitleToConfigure = "FUNCTION NEEDED FOR THIS"
             
         } else if let playerToConfigure = player {
             // setup SQuad
             imageToConfigure = UIImage(data: playerToConfigure.img!)!
-            nameToConfigure = playerToConfigure.id!
+            nameToConfigure = playerToConfigure.name!
             subTitleToConfigure = "FUNCTION NEEDED FOR THIS"
+            self.setNotificationLabel(on: playerToConfigure.isOnline)
         }
         
         

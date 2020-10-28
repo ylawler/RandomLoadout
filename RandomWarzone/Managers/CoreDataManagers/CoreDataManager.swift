@@ -14,6 +14,10 @@ class CoreDataManager {
     var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     
+    func savePlayer() {
+        
+    }
+    
     func saveNewSquad(squadName: String, squadImage: UIImage, squadPlayers: [Player], completion: (Bool) -> Void) {
         
         

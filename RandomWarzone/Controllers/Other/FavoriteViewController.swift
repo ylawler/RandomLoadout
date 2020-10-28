@@ -131,9 +131,9 @@ class FavoriteViewController: UIViewController, UICollectionViewDelegate, UIColl
 
 extension UIButton {
     func createShadow() {
-        self.layer.shadowColor = UIColor.white.cgColor//darkTheme.cgColor
+        self.layer.shadowColor = darkTheme.cgColor//darkTheme.cgColor
         self.layer.shadowOffset = .zero
-        self.layer.shadowRadius = 15
+        self.layer.shadowRadius = 12
         self.layer.shadowOpacity = 0.8
     }
 }

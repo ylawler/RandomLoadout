@@ -16,7 +16,7 @@ pod 'Firebase/Database'
 pod 'Firebase/Auth'
 
 
-
+pod "ViewAnimator"
 
 
 end

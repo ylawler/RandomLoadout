@@ -22,6 +22,185 @@ class FIRDatabaseManager {
         self.userId = uid
     }
     
+    func addObserverForOnlineFriends() {
+        ref = Database.database().reference()
+//        ref.child(<#T##pathString: String##String#>)
+    }
+    
+    
+//    func savePlayerDetails(playerId: String, CDM: CoreDataManager, completion: @escaping (Bool, Player?) -> Void) {
+//        ref = Database.database().reference()
+//        ref.child("Users/\(playerId)").observeSingleEvent(of: .value) { (PlayerSnapshot) in
+//            if let playerDict = PlayerSnapshot.value as? NSDictionary {
+//                let username = playerDict["username"] as! String
+//                let isOnline = playerDict["isOnline"] as! Bool
+//                let imageName = playerDict["imageName"] as! String
+//
+//                if !CDM.checkIfExists(id: playerId, entityName: "Player") {
+//                    self.savePlayerObject(for: CDM.context, id: playerId, img: (UIImage(systemName: imageName)?.pngData())!, name: username, isOnline: isOnline, isReady: false) { (successfull, player, err) in
+//                        if let er = err {
+//                            print(er)
+//                            completion(false, nil)
+//                        } else {
+//                            // Got player
+//                            completion(true, player!)
+//                        }
+//                    }
+//                }
+//            } else {
+//                completion(false, nil)
+//            }
+//        }
+//    }
+    
+    
+    func acceptFriendRequest(from: searchResult) {
+        // Add into Friends
+        ref.child("Users/\(self.userId)/Friends").child(from.id).setValue(0)
+        ref.child("Users/\(from.id)/Friends").child(self.userId).setValue(0)
+        
+        // Remove the requests
+        ref.child("Users/\(from.id)/Invites/Sent").child(self.userId).removeValue()
+        ref.child("Users/\(self.userId)/Invites/Received").child(from.id).removeValue()
+        
+        
+        // create Player object for new friend
+        
+        
+    }
+    
+    func removeFriendRequest(to uid: String) {
+        ref = Database.database().reference()
+        ref.child("Users/\(uid)/Invites/Received/\(self.userId)").removeValue()
+        ref.child("Users/\(self.userId)/Invites/Sent/\(uid)").removeValue()
+    }
+    
+    func sendFriendRequest(to uid: String) {
+        ref = Database.database().reference()
+        ref.child("Users/\(uid)/Invites/Received").child(self.userId).setValue(0)
+        ref.child("Users/\(self.userId)/Invites/Sent").child(uid).setValue(0)
+    }
+    
+    func searchUsersFor(username: String, completion: @escaping (Bool, [searchResult]?) -> Void) {
+        ref = Database.database().reference()
+        ref.child("Users").observeSingleEvent(of: .value) { (UserSnapshot) in
+            if let UsersDict = UserSnapshot.value as? NSDictionary {
+                let allIds = UsersDict.allKeys as! [String]
+                
+                var results: [searchResult] = []
+                
+                
+                for id in allIds {
+                    
+                    if id != self.userId {
+                        
+                        print("***** \(String(describing: UsersDict[id])) ****")
+
+                        let UserDict = UsersDict[id] as! NSDictionary
+                        let name = UserDict["username"] as! String
+                        let imageName = UserDict["imageName"] as! String
+                        
+                        
+                        // We need to get the friendStatus
+                        
+                        
+                        
+                        
+                        var friendStatus = "Request"
+                        
+                        if !self.checkDictForKey(dict: UserDict, key: "Friends", contains: self.userId) {
+                            // The two are not friends... Check the invites
+                            print("THE TWO ARE NOT FRIENDS -> CHECK INVITES")
+                            
+                            
+                            
+                            if let userInvitesDict = UserDict["Invites"] as? NSDictionary {
+                                if self.checkDictForKey(dict: userInvitesDict, key: "Received", contains: self.userId) {
+                                    // to search has received an invite from this user, status is pending
+                                    print("SEARCHEE received invite -> PENDING")
+                                    friendStatus = "Pending"
+                                } else {
+                                    print("SEARCHEE NOT received invite -> REQUEST")
+                                }
+                                
+                                if friendStatus == "Pending" {
+                                    print("IS PENDING -> CHECK IF THEIR SENT CONTAINS MY UID")
+                                    if self.checkDictForKey(dict: userInvitesDict, key: "Sent", contains: self.userId) {
+                                        print("FRIENDS WE ARE")
+                                        friendStatus = "Friends"
+                                        print("THIS SHOULD TECHNICALLY NEVER PRINT")
+                                    } else {
+                                        print("NO SENT REQUESTS TO ME")
+                                    }
+                                } else {
+                                    if self.checkDictForKey(dict: userInvitesDict, key: "Sent", contains: self.userId) {
+                                        print("THEY SENT US A REQUEST")
+                                        friendStatus = "Accept"
+                                    }
+                                }
+                            } else {
+                                print("USERINVITEDICT ERROR")
+                            }
+                        } else {
+                            friendStatus = "Friends"
+                        }
+                        
+                       
+                        
+                        
+                        print("---------------------------------------------------------\n")
+                        
+                        print("searching:\(username)")
+                        print("comparing:\(name)")
+                        print("with friendStatus: \(friendStatus)")
+                        
+                        print("username == name -> \(username.lowercased() == name.lowercased())")
+                        print("name.contains(username) -> \(name.lowercased().contains(username.lowercased()))")
+                        
+                        print("\n---------------------------------------------------------")
+                        
+                        
+                        
+                        if username.lowercased() == name.lowercased() || name.lowercased().contains(username.lowercased()) {
+                            // Found a user
+                            /*
+                             
+                             we need name to display, image to display, and id
+                             
+                             */
+                            
+                            let result = searchResult(id: id, name: name, imageName: imageName, friendStatus: friendStatus)
+                            results.append(result)
+                            
+                        }
+                    }
+                    
+                    
+                    
+                }
+                
+                
+                completion(true, results)
+                
+            } else {
+                completion(false, nil)
+            }
+        }
+    }
+    
+    func checkDictForKey(dict: NSDictionary, key: String, contains: String) -> Bool {
+        if let searchDict = dict[key] as? NSDictionary {
+            let allKeys = searchDict.allKeys as! [String]
+            if allKeys.contains(contains) {
+                // The ttwo are friends
+                return true
+            }
+        }
+        
+        return false
+    }
+    
+    
     func createNewSquad(squadName: String, squadImageName: String, squadPlayers: [Player]) {//, completion: (Bool) -> Void) {
         ref = Database.database().reference()
         print("CREATING NEW SQUAD FOR USER-ID: \(self.userId)")
@@ -47,14 +226,15 @@ class FIRDatabaseManager {
         idRef.child("Regiments").setValue(0)
         idRef.child("Friends").setValue(0)
         idRef.child("isOnline").setValue(true)
+        idRef.child("ImageName").setValue("person")
         
     }
     
     
-    func loadPlayerRegiments(uid: String, CDM: CoreDataManager, completion: @escaping (Bool, [Regiment]) -> Void) {
+    func loadPlayerRegiments(CDM: CoreDataManager, completion: @escaping (Bool, [Regiment]) -> Void) {
         
         ref = Database.database().reference()
-        ref.child("Users/\(userId)/Regiments").observeSingleEvent(of: .value) { (regimentsSnapshot) in
+        ref.child("Users/\(self.userId)/Regiments").observeSingleEvent(of: .value) { (regimentsSnapshot) in
             if let regimentDict = regimentsSnapshot.value as? NSDictionary {
                 let allRegimentIds = regimentDict.allKeys as! [String]
                 var regiments: [Regiment] = []
@@ -95,9 +275,9 @@ class FIRDatabaseManager {
         }
     }
     
-    func loadPlayerSquads(uid: String, CDM: CoreDataManager, completion: @escaping (Bool, [Squad]) -> Void) {
+    func loadPlayerSquads(CDM: CoreDataManager, completion: @escaping (Bool, [Squad]) -> Void) {
         ref = Database.database().reference()
-        ref.child("Users/\(userId)/Favorites").observeSingleEvent(of: .value) { (squadsSnapshot) in
+        ref.child("Users/\(self.userId)/Favorites").observeSingleEvent(of: .value) { (squadsSnapshot) in
             if let squadsDict = squadsSnapshot.value as? NSDictionary {
                 let allSquadIds = squadsDict.allKeys as! [String]
                 var squads: [Squad] = []
@@ -108,20 +288,18 @@ class FIRDatabaseManager {
                     let name = squadDict["name"] as! String
                     let imageName = squadDict["imageName"] as! String
 //                    let isOnline = squadDict["isOnline"] as? Bool ?? false
-                    let gamers = squadDict["gamers"] as! NSDictionary
                     
                     
                     var squadPlayers: [Player] = []
-                    let allGamerIds = gamers.allKeys as! [String]
-                    for gamerId in allGamerIds {
-                        print("************** GET GAMER FROM ID: \(gamerId)")
-                        if let gamer = CDM.getPlayer(with: gamerId) {
-                            squadPlayers.append(gamer)
+                    if let gamers = squadDict["gamers"] as? NSDictionary {
+                        let allGamerIds = gamers.allKeys as! [String]
+                        for gamerId in allGamerIds {
+                            print("************** GET GAMER FROM ID: \(gamerId)")
+                            if let gamer = CDM.getPlayer(with: gamerId) {
+                                squadPlayers.append(gamer)
+                            }
                         }
-                        
-                        
                     }
-                    
                     
                     if !CDM.checkIfExists(id: squadId, entityName: "Squad") {
                         self.saveSquadObject(for: CDM.context, id: squadId, img: (UIImage(systemName: imageName)?.pngData())!, name: name, players: squadPlayers) { (successful, squad, err) in
@@ -140,35 +318,42 @@ class FIRDatabaseManager {
     }
     
     // load player Friends for user from Firebase
-    func loadPlayerFriends(uid: String, CDM: CoreDataManager, completion: @escaping (Bool, [Player]) -> Void) {
+    func loadPlayerFriendIds(CDM: CoreDataManager, completion: @escaping (Bool, [Player]) -> Void) {
         ref = Database.database().reference()
-        ref.child("Users/\(userId)/Friends").observeSingleEvent(of: .value) { (friendsSnapshot) in
+        ref.child("Users/\(self.userId)/Friends").observeSingleEvent(of: .value) { (friendsSnapshot) in
             if let friendsDict = friendsSnapshot.value as? NSDictionary {
                 
                 print("Loading Player Friends")
                 print(friendsDict)
                 
                 let allFriendIds = friendsDict.allKeys as! [String]
+                
+                
+                
                 var friends: [Player] = []
                 for friendId in allFriendIds {
                     print("CREATING \(friendId)")
                     // Create a Gamer for each friend
-                    let friendDict = friendsDict[friendId] as! NSDictionary
-                    print(friendDict)
-                    let name = friendDict["name"] as! String
-                    let imageName = friendDict["imageName"] as! String
-                    let isOnline = friendDict["isOnline"] as? Bool ?? false
-                    
-                    print("\(name) is online: \(isOnline)")
-                    
-                    
-                    if !CDM.checkIfExists(id: uid, entityName: "Player") {
-                        
-                        print("Player \(uid) doesnt exist - create player Object")
-                        
-                        self.savePlayerObject(for: CDM.context, id: friendId, img: (UIImage(systemName: imageName)?.pngData())!, name: name, isOnline: isOnline, isReady: false) { (successful, player, err) in
-                            if successful {
-                                friends.append(player!)
+
+                    // Get player object for friendId
+                    if let friendDict = friendsDict[friendId] as? NSDictionary {
+                        print(friendDict)
+                        let name = friendDict["name"] as! String
+                        let imageName = friendDict["imageName"] as! String
+                        let isOnline = friendDict["isOnline"] as? Bool ?? false
+                        let isReady = friendDict["isReady"] as? Bool ?? false
+
+                        print("\(name) is online: \(isOnline)")
+
+
+                        if !CDM.checkIfExists(id: friendId, entityName: "Player") {
+
+                            print("Player \(friendId) doesnt exist - create player Object")
+
+                            self.savePlayerObject(for: CDM.context, id: friendId, img: (UIImage(systemName: imageName)?.pngData())!, name: name, isOnline: isOnline, isReady: isReady) { (successful, player, err) in
+                                if successful {
+                                    friends.append(player!)
+                                }
                             }
                         }
                     }
@@ -186,6 +371,7 @@ class FIRDatabaseManager {
         player.img = img
         player.isOnline = isOnline
         player.isReady = isReady
+        player.name = name
         
         do {
             try context.save()
@@ -246,7 +432,7 @@ class FIRDatabaseManager {
     }
     
     
-    func savePlayerFriendFromFirebase(uid: String, context: NSManagedObjectContext) {
+    func savePlayerFriendFromFirebase(uid: String, context: NSManagedObjectContext, completion: @escaping (Bool) -> Void) {
         ref = Database.database().reference()
         ref.child("Users/\(uid)").observeSingleEvent(of: .value) { (PlayerSnapshot) in
             if let PlayerDict = PlayerSnapshot.value as? NSDictionary {
@@ -262,10 +448,14 @@ class FIRDatabaseManager {
                 
                 do {
                     try context.save()
+                    completion(true)
                 } catch let err {
                     print("Error saving new player in coreData: \(err)")
+                    completion(false)
                 }
                 
+            } else {
+                completion(false)
             }
         }
     }

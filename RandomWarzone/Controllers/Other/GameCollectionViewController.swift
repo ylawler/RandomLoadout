@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ViewAnimator
 
 private let reuseIdentifier = "Cell"
 
@@ -15,6 +16,9 @@ class GameCollectionViewController: UICollectionViewController, UICollectionView
     
     var LoadoutClass: Loadout?
     
+    var selectedCells: [IndexPath] = []
+    
+    var attachments: [String: attachment]?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,16 +37,27 @@ class GameCollectionViewController: UICollectionViewController, UICollectionView
 
         // Do any additional setup after loading the view.
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+//        let animation = AnimationType.vector(CGVector(dx: 0, dy: 200))
+//        UIView.animate(views: self.collectionView.visibleCells, animations: [animation], duration: 1)
+    }
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using [segue destinationViewController].
         // Pass the selected object to the new view controller.
+        if segue.identifier == "showAttachmentSegue" {
+            let dest = segue.destination as! AttachmentsCollectionViewController
+            dest.Attachments = self.attachments!
+        }
+        
     }
-    */
+    
 
     // MARK: UICollectionViewDataSource
 
@@ -119,7 +134,32 @@ class GameCollectionViewController: UICollectionViewController, UICollectionView
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }
+    
+    
 
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        guard let loadout = self.LoadoutClass else { return }
+        
+        
+        if indexPath.item <= 1 {
+            if indexPath.item == 0 {
+                // Selected Primary Weapon
+                let primarySelected = loadout.primaryWeapon
+                self.attachments = primarySelected.setAttachments
+            } else if indexPath.item == 1 {
+                // Selected Primary Weapon
+                let secondarySelected = loadout.secondaryWeapon
+                
+                self.attachments = secondarySelected.setAttachments
+            }
+            
+            self.performSegue(withIdentifier: "showAttachmentSegue", sender: self)
+        }
+    }
+    
+    
+    
     // MARK: UICollectionViewDelegate
 
     /*

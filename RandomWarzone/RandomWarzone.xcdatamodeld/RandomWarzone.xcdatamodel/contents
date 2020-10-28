@@ -5,6 +5,7 @@
         <attribute name="img" optional="YES" attributeType="Binary"/>
         <attribute name="isOnline" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="isReady" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
         <relationship name="regiment" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Regiment" inverseName="players" inverseEntity="Regiment"/>
         <relationship name="squad" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Squad" inverseName="players" inverseEntity="Squad"/>
     </entity>
@@ -21,7 +22,7 @@
         <relationship name="players" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Player" inverseName="squad" inverseEntity="Player"/>
     </entity>
     <elements>
-        <element name="Player" positionX="-54" positionY="-9" width="128" height="133"/>
+        <element name="Player" positionX="-54" positionY="-9" width="128" height="148"/>
         <element name="Regiment" positionX="0" positionY="90" width="128" height="103"/>
         <element name="Squad" positionX="-27" positionY="54" width="128" height="103"/>
     </elements>

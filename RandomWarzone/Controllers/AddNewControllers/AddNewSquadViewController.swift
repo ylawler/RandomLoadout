@@ -150,6 +150,7 @@ class AddNewSquadViewController: UIViewController, UICollectionViewDelegate, UIC
     @IBAction func createButtonTapped(_ sender: UIBarButtonItem) {
         
         // if all conditions met, create a squad. Name, id, and list of players
+        print("Create Squad: \(self.addNameTextField.text)")
         
         if self.addNameTextField.text != "" {
             
