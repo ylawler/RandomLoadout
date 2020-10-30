@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AC0BA28C254C2E460029822D /* AttachmentDetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0BA28A254C2E460029822D /* AttachmentDetailCollectionViewCell.swift */; };
+		AC0BA28D254C2E460029822D /* AttachmentDetailCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC0BA28B254C2E460029822D /* AttachmentDetailCollectionViewCell.xib */; };
 		AC295DBF2531AC5D00D7BA6A /* AssaultRifles.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC295DBE2531AC5D00D7BA6A /* AssaultRifles.swift */; };
 		AC2F6FC12547288000A629C3 /* InvitesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2F6FC02547288000A629C3 /* InvitesCollectionViewController.swift */; };
 		AC2F6FC4254732C300A629C3 /* EventsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2F6FC3254732C300A629C3 /* EventsCollectionViewController.swift */; };
@@ -33,6 +35,7 @@
 		AC8B02D4253DB03100CCDEA4 /* PlayerSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8B02D3253DB03100CCDEA4 /* PlayerSelectionViewController.swift */; };
 		AC8B02D7253DB12600CCDEA4 /* PlayerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8B02D5253DB12600CCDEA4 /* PlayerCollectionViewCell.swift */; };
 		AC8B02D8253DB12600CCDEA4 /* PlayerCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC8B02D6253DB12600CCDEA4 /* PlayerCollectionViewCell.xib */; };
+		ACA1BFA3254B0DEC00157881 /* titleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA1BFA2254B0DEC00157881 /* titleView.swift */; };
 		ACA410C4253208AA00D0A7FC /* Perks.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA410C3253208AA00D0A7FC /* Perks.swift */; };
 		ACA410C6253208B900D0A7FC /* SMGs.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA410C5253208B900D0A7FC /* SMGs.swift */; };
 		ACA410C8253208D000D0A7FC /* Shotguns.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA410C7253208D000D0A7FC /* Shotguns.swift */; };
@@ -92,6 +95,8 @@
 		1CFF4AD8D14F5634E98B2C5F /* Pods-RandomWarzone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RandomWarzone.debug.xcconfig"; path = "Target Support Files/Pods-RandomWarzone/Pods-RandomWarzone.debug.xcconfig"; sourceTree = "<group>"; };
 		8901F5B4686D24E69334D070 /* Pods-RandomWarzone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RandomWarzone.release.xcconfig"; path = "Target Support Files/Pods-RandomWarzone/Pods-RandomWarzone.release.xcconfig"; sourceTree = "<group>"; };
 		985821307CBB08749F43CA61 /* Pods_RandomWarzone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RandomWarzone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC0BA28A254C2E460029822D /* AttachmentDetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttachmentDetailCollectionViewCell.swift; sourceTree = "<group>"; };
+		AC0BA28B254C2E460029822D /* AttachmentDetailCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AttachmentDetailCollectionViewCell.xib; sourceTree = "<group>"; };
 		AC295DBE2531AC5D00D7BA6A /* AssaultRifles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssaultRifles.swift; sourceTree = "<group>"; };
 		AC2F6FC02547288000A629C3 /* InvitesCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitesCollectionViewController.swift; sourceTree = "<group>"; };
 		AC2F6FC3254732C300A629C3 /* EventsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsCollectionViewController.swift; sourceTree = "<group>"; };
@@ -118,6 +123,7 @@
 		AC8B02D3253DB03100CCDEA4 /* PlayerSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerSelectionViewController.swift; sourceTree = "<group>"; };
 		AC8B02D5253DB12600CCDEA4 /* PlayerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerCollectionViewCell.swift; sourceTree = "<group>"; };
 		AC8B02D6253DB12600CCDEA4 /* PlayerCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlayerCollectionViewCell.xib; sourceTree = "<group>"; };
+		ACA1BFA2254B0DEC00157881 /* titleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = titleView.swift; sourceTree = "<group>"; };
 		ACA410C3253208AA00D0A7FC /* Perks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Perks.swift; sourceTree = "<group>"; };
 		ACA410C5253208B900D0A7FC /* SMGs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMGs.swift; sourceTree = "<group>"; };
 		ACA410C7253208D000D0A7FC /* Shotguns.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shotguns.swift; sourceTree = "<group>"; };
@@ -219,6 +225,7 @@
 		AC295DBC2531AA6100D7BA6A /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				ACA1BFA4254B3B6300157881 /* Attachments */,
 				ACAE43A12546EAAF00EBBF72 /* Friends */,
 				ACAF812025459E40007398A6 /* Login */,
 				ACEF43F125449B68007DA46B /* AddNew */,
@@ -341,6 +348,23 @@
 			path = Loadout;
 			sourceTree = "<group>";
 		};
+		ACA1BFA1254B0DD000157881 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				ACA1BFA2254B0DEC00157881 /* titleView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		ACA1BFA4254B3B6300157881 /* Attachments */ = {
+			isa = PBXGroup;
+			children = (
+				AC0BA28A254C2E460029822D /* AttachmentDetailCollectionViewCell.swift */,
+				AC0BA28B254C2E460029822D /* AttachmentDetailCollectionViewCell.xib */,
+			);
+			path = Attachments;
+			sourceTree = "<group>";
+		};
 		ACA410D12532090C00D0A7FC /* Weapon Attachments */ = {
 			isa = PBXGroup;
 			children = (
@@ -393,6 +417,7 @@
 		ACA5E9E125309D80003A9070 /* RandomWarzone */ = {
 			isa = PBXGroup;
 			children = (
+				ACA1BFA1254B0DD000157881 /* Views */,
 				ACAF812C25462075007398A6 /* Protocols */,
 				AC444AFE25432B5F00690A5D /* Model */,
 				AC444AF025418F4500690A5D /* Classes */,
@@ -638,6 +663,7 @@
 				ACAF812425459E5C007398A6 /* LoginCollectionViewCell.xib in Resources */,
 				ACA5EA022530B8E6003A9070 /* WeaponCollectionViewCell.xib in Resources */,
 				ACE404E92540979C00CB5F20 /* MemberCollectionViewCell.xib in Resources */,
+				AC0BA28D254C2E460029822D /* AttachmentDetailCollectionViewCell.xib in Resources */,
 				AC444AFD2541AC7600690A5D /* GamerCollectionViewCell.xib in Resources */,
 				ACAF812825459EE8007398A6 /* SignUpCollectionViewCell.xib in Resources */,
 				ACA5EA0A2530B94A003A9070 /* LethalCollectionViewCell.xib in Resources */,
@@ -713,6 +739,7 @@
 				AC595773253329C300C3D395 /* Loadout.swift in Sources */,
 				AC4E125A2549803200238C8C /* HomeCollectionViewCell.swift in Sources */,
 				ACA5EA052530B907003A9070 /* PerksCollectionViewCell.swift in Sources */,
+				AC0BA28C254C2E460029822D /* AttachmentDetailCollectionViewCell.swift in Sources */,
 				ACAF811D2545839B007398A6 /* AddNewItemViewController.swift in Sources */,
 				ACEF44032545791F007DA46B /* NewSquadCollectionViewCell.swift in Sources */,
 				ACA410CE253208FB00D0A7FC /* SniperRifles.swift in Sources */,
@@ -729,6 +756,7 @@
 				AC444AF82541AA7300690A5D /* RegimentViewController.swift in Sources */,
 				AC444AF62541AA6700690A5D /* FriendViewController.swift in Sources */,
 				ACA410C6253208B900D0A7FC /* SMGs.swift in Sources */,
+				ACA1BFA3254B0DEC00157881 /* titleView.swift in Sources */,
 				ACE404E425407D0D00CB5F20 /* RecentGameViewController.swift in Sources */,
 				AC444AF225418F5700690A5D /* Squad.swift in Sources */,
 				AC2F6FC12547288000A629C3 /* InvitesCollectionViewController.swift in Sources */,

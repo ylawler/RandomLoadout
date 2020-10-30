@@ -17,9 +17,27 @@ class FIRDatabaseManager {
     
     var ref: DatabaseReference!
     var userId: String
+    var username: String?
+    var imageName: String?
     
     init(uid: String) {
         self.userId = uid
+    }
+    
+    func getProfileForTitleView(completion: @escaping (Bool, String?, String?) -> Void) {
+        ref = Database.database().reference()
+        ref.child("Users/\(self.userId)").observeSingleEvent(of: .value) { (DataSnapshot) in
+            if let DataDict = DataSnapshot.value as? NSDictionary {
+                // get name and imageName
+                let username = DataDict["username"] as! String
+                let imageName = DataDict["imageName"] as! String
+                self.username = username
+                self.imageName = imageName
+                completion(true, username, imageName)
+            } else {
+                completion(false, nil, nil)
+            }
+        }
     }
     
     func addObserverForOnlineFriends() {
@@ -56,8 +74,16 @@ class FIRDatabaseManager {
     
     func acceptFriendRequest(from: searchResult) {
         // Add into Friends
-        ref.child("Users/\(self.userId)/Friends").child(from.id).setValue(0)
-        ref.child("Users/\(from.id)/Friends").child(self.userId).setValue(0)
+        ref.child("Users/\(self.userId)/Friends").child(from.id).child("name").setValue(from.name)
+        ref.child("Users/\(self.userId)/Friends").child(from.id).child("imageName").setValue(from.imageName)
+        ref.child("Users/\(self.userId)/Friends").child(from.id).child("isOnline").setValue(false)
+        ref.child("Users/\(self.userId)/Friends").child(from.id).child("isReady").setValue(false)
+        
+        ref.child("Users/\(from.id)/Friends").child(self.userId).child("name").setValue(self.username ?? "ERROR")
+        ref.child("Users/\(from.id)/Friends").child(self.userId).child("imageName").setValue(self.imageName ?? "person")
+        ref.child("Users/\(from.id)/Friends").child(self.userId).child("isOnline").setValue(false)
+        ref.child("Users/\(from.id)/Friends").child(self.userId).child("isReady").setValue(false)
+        
         
         // Remove the requests
         ref.child("Users/\(from.id)/Invites/Sent").child(self.userId).removeValue()

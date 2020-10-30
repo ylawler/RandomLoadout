@@ -10,9 +10,15 @@ import UIKit
 
 private let reuseIdentifier = "Cell"
 
+public struct attachmentViewData {
+    let attachmentName: String
+    let attachnentCategory: String
+}
+
 class AttachmentsCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
-    var Attachments: [String: attachment]?
+//    var Attachments: [String: attachment]?
+    var RandomAttachments: [attachmentViewData]?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,8 +30,12 @@ class AttachmentsCollectionViewController: UICollectionViewController, UICollect
 
         // Register cell classes
         self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-
+        
+        self.collectionView.contentInset = UIEdgeInsets(top: 16, left: 0, bottom: 0, right: 0)
+        
+        self.collectionView.register(AttachmentDetailCollectionViewCell.nib(), forCellWithReuseIdentifier: AttachmentDetailCollectionViewCell.identifier)
         // Do any additional setup after loading the view.
+        
     }
 
     /*
@@ -48,17 +58,29 @@ class AttachmentsCollectionViewController: UICollectionViewController, UICollect
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        if let attachments = self.Attachments {
-            return attachments.keys.count
+        if let attachments = self.RandomAttachments {
+            return attachments.count
         } else {
             return 0
         }
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
-        cell.backgroundColor = .orange
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AttachmentDetailCollectionViewCell.identifier, for: indexPath) as! AttachmentDetailCollectionViewCell
+        
         // Configure the cell
+        
+        
+        if let randomAttachments = self.RandomAttachments {
+            let randomAttachment = randomAttachments[indexPath.item]
+            cell.configure(attachment: randomAttachment.attachnentCategory, attachmentName: randomAttachment.attachmentName)
+        }
+        
+        
+//
+//        let key = self.Attachments?.keys[indexPath.item]
+//        cell.configure(attachment: self.Attachments[key], attachmentName: key)
+//
     
         return cell
     }
@@ -66,15 +88,15 @@ class AttachmentsCollectionViewController: UICollectionViewController, UICollect
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         
-        return CGSize(width: (collectionView.frame.width - (3*4))/4, height: (collectionView.frame.width - (3*4))/4)
+        return CGSize(width: collectionView.frame.width, height: 96)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 4
+        return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 4
+        return 0
     }
 
     // MARK: UICollectionViewDelegate

@@ -46,18 +46,53 @@ class PlayerSelectionViewController: UIViewController, UICollectionViewDelegate,
     var regimentInvites: [Regiment] = []
     var playerInvites: [Player] = []
     
+    
+    let navigationTitleView = titleView(frame: CGRect(x: 0, y: 0, width: 150, height: 50))
+    
+    let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+    let usernameLabel = UILabel(frame: CGRect(x: 50, y: 0, width: 110, height: 42))
+    
+    fileprivate func setupNavigationTitleView() {
+        if let databaseManager = self.FDM {
+            imageView.layer.cornerRadius = 20
+            imageView.layer.borderColor = UIColor.lightText.cgColor
+            imageView.layer.borderWidth = 1
+            imageView.contentMode = .scaleAspectFit
+            imageView.clipsToBounds = true
+            
+            
+            usernameLabel.font = UIFont.systemFont(ofSize: 18, weight: .bold)
+            usernameLabel.textColor = .lightText
+            
+            usernameLabel.text = "ylawler"
+            
+            navigationTitleView.addSubview(imageView)
+            navigationTitleView.addSubview(usernameLabel)
+            
+            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(profileTapped))
+            navigationTitleView.addGestureRecognizer(tapGesture)
+            
+            databaseManager.getProfileForTitleView { (successfull, username, imageName) in
+                if successfull {
+                    self.imageView.image = UIImage(systemName: imageName!)
+                    self.usernameLabel.text = username!
+                }
+            }
+            
+            self.navigationItem.titleView = navigationTitleView
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         checkForUserAndLoadData()
+
         
-//        // Add listener to firebase for invitations
-//        FDM?.observeForInvites { (inviteFound) in
-//            if inviteFound {
-//                print("INVITES FOUND")
-//            }
-//        }
         
-        self.notificationButton.tintColor = .orange
+        
+        setupNavigationTitleView()
+        
+        
         
         
         // Do any additional setup after loading the view.
@@ -70,8 +105,13 @@ class PlayerSelectionViewController: UIViewController, UICollectionViewDelegate,
         
     }
     
+    @objc func profileTapped() {
+        print("Profile Tapepd")
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         self.checkForUserAndLoadData()
+        self.setupNavigationTitleView()
 //        self.refreshData()
     }
     
@@ -382,6 +422,8 @@ class PlayerSelectionViewController: UIViewController, UICollectionViewDelegate,
                     self.loadCoreData()
                     
                 }
+                
+                
                 self.refreshData()
                 
             } else {

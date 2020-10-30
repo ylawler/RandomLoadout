@@ -15,6 +15,8 @@ public class weapon {
     var allAttachments: Attachments
     var imageName: String
     var setAttachments: [String: attachment] = [:]
+    
+    var randomAttachments: [attachmentViewData] = []
 //    var category: Category
     
     
@@ -85,6 +87,10 @@ public class weapon {
             let randomAttachment = attachmentList[Int.random(in: 0..<attachmentList.count)]
 //            print("Setting \(key) attachment to \(randomAttachment.name)\n")
             self.setAttachments[key] = randomAttachment
+            
+            let newattachmentView = attachmentViewData(attachmentName: randomAttachment.name, attachnentCategory: key)
+            self.randomAttachments.append(newattachmentView)
+            
         }
     }
     

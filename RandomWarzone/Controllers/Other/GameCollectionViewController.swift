@@ -19,6 +19,8 @@ class GameCollectionViewController: UICollectionViewController, UICollectionView
     var selectedCells: [IndexPath] = []
     
     var attachments: [String: attachment]?
+    var randomAttachments: [attachmentViewData]?
+    var selectedIdx: Int = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,7 +55,14 @@ class GameCollectionViewController: UICollectionViewController, UICollectionView
         // Pass the selected object to the new view controller.
         if segue.identifier == "showAttachmentSegue" {
             let dest = segue.destination as! AttachmentsCollectionViewController
-            dest.Attachments = self.attachments!
+//            dest.Attachments = self.attachments!
+            
+            if let randomAttachments = self.randomAttachments {
+                dest.RandomAttachments = randomAttachments
+            }
+            
+            
+//            dest.Attachments = attachmentViewData(attachmentName: self.attachments?.keys.first, attachnentCategory: self.attachments?.values.first)
         }
         
     }
@@ -138,7 +147,7 @@ class GameCollectionViewController: UICollectionViewController, UICollectionView
     
 
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        self.selectedIdx = indexPath.item
         guard let loadout = self.LoadoutClass else { return }
         
         
@@ -147,11 +156,13 @@ class GameCollectionViewController: UICollectionViewController, UICollectionView
                 // Selected Primary Weapon
                 let primarySelected = loadout.primaryWeapon
                 self.attachments = primarySelected.setAttachments
+                self.randomAttachments = primarySelected.randomAttachments
             } else if indexPath.item == 1 {
                 // Selected Primary Weapon
                 let secondarySelected = loadout.secondaryWeapon
                 
                 self.attachments = secondarySelected.setAttachments
+                self.randomAttachments = secondarySelected.randomAttachments
             }
             
             self.performSegue(withIdentifier: "showAttachmentSegue", sender: self)

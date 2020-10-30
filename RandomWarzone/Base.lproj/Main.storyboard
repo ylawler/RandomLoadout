@@ -424,7 +424,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="HQu-1I-fKG">
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="HQu-1I-fKG">
                             <size key="itemSize" width="128" height="128"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -442,7 +442,7 @@
                             <blurEffect style="regular"/>
                         </visualEffectView>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="cux-Wy-I8V">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="AttachmentCollectionViewCellId" id="cux-Wy-I8V">
                                 <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="gUC-M0-aiV">
@@ -565,7 +565,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="lyn-u3-ZDX"/>
                     </view>
-                    <navigationItem key="navigationItem" id="c3L-T5-haR"/>
+                    <navigationItem key="navigationItem" id="c3L-T5-haR">
+                        <barButtonItem key="rightBarButtonItem" image="plus" catalog="system" id="s71-L7-UrQ"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="gamersCollectionView" destination="BpB-ft-4a4" id="PKt-oI-hvs"/>
                         <outlet property="readyButton" destination="fq6-bD-qzH" id="26x-S0-dgh"/>
