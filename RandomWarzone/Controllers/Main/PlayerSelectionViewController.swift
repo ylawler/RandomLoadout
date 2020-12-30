@@ -40,6 +40,10 @@ class PlayerSelectionViewController: UIViewController, UICollectionViewDelegate,
     let CDM = CoreDataManager()
     var FDM: FIRDatabaseManager?
     
+    
+    var appManager: AppManager?
+    
+    
     var newItem = "nill"
     
     var squadInvites: [Squad] = []
@@ -53,6 +57,15 @@ class PlayerSelectionViewController: UIViewController, UICollectionViewDelegate,
     let usernameLabel = UILabel(frame: CGRect(x: 50, y: 0, width: 110, height: 42))
     
     fileprivate func setupNavigationTitleView() {
+        
+        
+        if let AM = self.appManager {
+            // we have an appManager
+            print("WE HAVE AN APP MANAGER \(AM.user!.username)")
+        }
+        
+        
+        
         if let databaseManager = self.FDM {
             imageView.layer.cornerRadius = 20
             imageView.layer.borderColor = UIColor.lightText.cgColor
@@ -138,6 +151,11 @@ class PlayerSelectionViewController: UIViewController, UICollectionViewDelegate,
         } else if segue.identifier == "showInviteSegue" {
             let dest = segue.destination as! InvitesCollectionViewController
             dest.setInvites(PlayerInvites: self.playerInvites, RegimentInvites: self.regimentInvites, SquadInvitess: self.squadInvites)
+        } else if segue.identifier == "showFavoriteSegue" {
+            let dest = segue.destination as! FavoriteViewController
+            dest.Favorite = self.squads[self.selectedIndexItem]
+            
+//            dest.squadPlayers = self.squads[self.selectedIndexItem].players?.allObjects as! [Player]
         }
         
         
@@ -221,32 +239,6 @@ class PlayerSelectionViewController: UIViewController, UICollectionViewDelegate,
         let headerHeight: CGFloat = 64
         
         return CGSize(width: collectionView.frame.width, height: headerHeight)
-        
-        //        switch section {
-        //        case 0:
-        //            if self.regiments.count == 0 {
-        //                return .zero
-        //            } else {
-        //                return CGSize(width: collectionView.frame.width, height: headerHeight)
-        //            }
-        //        case 1:
-        //            if self.squads.count == 0 {
-        //                return .zero
-        //            } else {
-        //                return CGSize(width: collectionView.frame.width, height: headerHeight)
-        //            }
-        //        case 2:
-        //            if self.players.count == 0 {
-        //                return .zero
-        //            } else {
-        //                return CGSize(width: collectionView.frame.width, height: headerHeight)
-        //            }
-        //        default:
-        //            return .zero
-        //        }
-        
-        
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -349,25 +341,13 @@ class PlayerSelectionViewController: UIViewController, UICollectionViewDelegate,
     }
     
     fileprivate func loadSquads() {
-        self.FDM?.loadPlayerSquads(CDM: self.CDM) { (playerSquadsFound, squads) in
-            if playerSquadsFound {
-                self.addToSquads(Squads: squads)
-                self.collectionView.reloadData()
-            } else {
-                print("REFRESH DATA: NO SQUADS FOUND")
-            }
-        }
+        guard let AM = self.appManager else { return }
+        AM.loadSquads()
     }
     
     fileprivate func loadRegiments() {
-        self.FDM?.loadPlayerRegiments(CDM: self.CDM) { (playerRegimentsFound, regiments) in
-            if playerRegimentsFound {
-                self.addToRegiments(Regiments: regiments)
-                self.collectionView.reloadData()
-            } else {
-                print("REFRESH DATA: NO REGIMENTS FOUND")
-            }
-        }
+        guard let AM = self.appManager else { return }
+        AM.loadRegiments()
     }
     
     fileprivate func loadFriends() {
@@ -415,13 +395,25 @@ class PlayerSelectionViewController: UIViewController, UICollectionViewDelegate,
     fileprivate func checkForUserAndLoadData() {
         FIRAuthManager.shared.checkForUser { (userExists, user) in
             if userExists {
-                if let _ = self.FDM {
-                    self.loadCoreData()
-                } else {
-                    self.FDM = FIRDatabaseManager(uid: user!.uid)
+                
+                if let _ = self.appManager {
+                    // we have an appManager
                     self.loadCoreData()
                     
+                } else {
+                    self.appManager = AppManager(uid: user!.uid)
                 }
+                
+                
+//                if let _ = self.FDM {
+//                    self.loadCoreData()
+//                } else {
+//
+//                    // Create AppManager for uid
+//
+//                    self.loadCoreData()
+//
+//                }
                 
                 
                 self.refreshData()

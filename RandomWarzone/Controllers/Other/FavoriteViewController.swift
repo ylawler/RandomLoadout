@@ -17,6 +17,10 @@ class FavoriteViewController: UIViewController, UICollectionViewDelegate, UIColl
     var RandomLoadout: Loadout?
     var gamers: [Gamer] = []
     
+    var FirebaseDatabase: FIRDatabaseManager?
+    
+//    var squadPlayers: [Player] = []
+    
     var ref: DatabaseReference?
     
     
@@ -88,8 +92,8 @@ class FavoriteViewController: UIViewController, UICollectionViewDelegate, UIColl
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if let favorite = self.Favorite {
-            return 0//favorite.gamerIds.count
+        if let squadPlayers = self.Favorite?.players?.allObjects as? [Player] {
+            return squadPlayers.count
         } else {
             return 0
         }
@@ -101,6 +105,11 @@ class FavoriteViewController: UIViewController, UICollectionViewDelegate, UIColl
 //        if let favorite = self.Favorite?.gamerIds {
 //            cell.configure(gamerId: favorite[indexPath.item])
 //        }
+        
+        if let squadPlayers = self.Favorite?.players?.allObjects as? [Player] {
+//            cell.
+            cell.configurePlayer(player: squadPlayers[indexPath.item])
+        }
         
         
         return cell
@@ -124,6 +133,12 @@ class FavoriteViewController: UIViewController, UICollectionViewDelegate, UIColl
         self.performSegue(withIdentifier: "showGameSegue", sender: self)
     }
     
+    @IBAction func inviteTapped(_ sender: UIBarButtonItem) {
+        // Send squad Invite
+        if let firebaseDatabase = self.FirebaseDatabase {
+//            firebaseDatabase.sen
+        }
+    }
     
 }
 

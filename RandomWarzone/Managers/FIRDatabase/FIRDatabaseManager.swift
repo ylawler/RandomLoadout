@@ -11,28 +11,190 @@ import CoreData
 import FirebaseDatabase
 import FirebaseAuth
 
+public struct squadStruct {
+    let id: String
+    let name: String
+    let imageName: String
+    let players: [String: Bool]
+}
+
+public struct regimentStruct {
+    let id: String
+    let name: String
+    let imageName: String
+    let players: [String: Bool]
+}
+
+public struct StructData {
+    let id: String
+    let name: String
+    let imageName: String
+    let players: [String: Bool]
+}
+
+public struct friendStruct {
+    let id: String
+    let name: String
+    let imageName: String
+    let players: [String: Bool]
+}
+
 
 class FIRDatabaseManager {
 //    static let shared = FIRDatabaseManager()
     
     var ref: DatabaseReference!
-    var userId: String
-    var username: String?
-    var imageName: String?
+    var user: UserStruct
     
-    init(uid: String) {
-        self.userId = uid
+    init(user: UserStruct) {
+        self.user = user
+    }
+    
+    func getPlayer(forId: String, completion: @escaping (Bool, friendStruct?) -> Void) {
+        
+    }
+    
+    func getData(forKey: String, forId: String, completion: @escaping (Bool, StructData?) -> Void) {
+        ref = Database.database().reference()
+        ref.child("\(forKey)/\(forId)").observeSingleEvent(of: .value) { (Snapshot) in
+            if let SnapDict = Snapshot.value as? NSDictionary {
+                let imageName = SnapDict["imageName"] as! String
+                let name = SnapDict["name"] as! String
+                var players: [String: Bool] = [:]
+                if let PlayersDict = SnapDict["Players"] as? NSDictionary {
+                    
+                    // We have players
+                    
+                    
+                    print("\(name) - SQUAD - with players:")
+                    let allPlayerIds = PlayersDict.allKeys as! [String]
+                    for playerId in allPlayerIds {
+                        let PlayerDict = PlayersDict[playerId] as! NSDictionary
+                        let isReady = PlayerDict["isReady"] as! Bool
+                        players.updateValue(isReady, forKey: playerId)
+                        print("player: \(playerId) -> isReady: \(isReady)")
+                    }
+                }
+                
+                // Create a temporary squad struct
+//                let tmpSquad = squadStruct(id: forId, name: name, imageName: imageName, players: players)
+                
+                let tmpStruct = StructData(id: forId, name: name, imageName: imageName, players: players)
+                
+                completion(true, tmpStruct)
+                
+            } else {
+                completion(false, nil)
+            }
+        }
+    }
+    
+//    func getSquad(forId: String, completion: @escaping (Bool, squadStruct?) -> Void) {
+//        ref = Database.database().reference()
+//        ref.child("Squads/\(forId)").observeSingleEvent(of: .value) { (SquadSnapshot) in
+//            if let SquadDict = SquadSnapshot.value as? NSDictionary {
+//                let imageName = SquadDict["imageName"] as! String
+//                let name = SquadDict["name"] as! String
+//                var players: [String: Bool] = [:]
+//                if let PlayersDict = SquadDict["Players"] as? NSDictionary {
+//
+//                    // We have players
+//
+//
+//                    print("\(name) - SQUAD - with players:")
+//                    let allPlayerIds = PlayersDict.allKeys as! [String]
+//                    for playerId in allPlayerIds {
+//                        let PlayerDict = PlayersDict[playerId] as! NSDictionary
+//                        let isReady = PlayerDict["isReady"] as! Bool
+//                        players.updateValue(isReady, forKey: playerId)
+//                        print("player: \(playerId) -> isReady: \(isReady)")
+//                    }
+//                }
+//
+//                // Create a temporary squad struct
+//                let tmpSquad = squadStruct(id: forId, name: name, imageName: imageName, players: players)
+//
+//                completion(true, tmpSquad)
+//
+//            } else {
+//                completion(false, nil)
+//            }
+//        }
+//    }
+    
+    func getFirebaseIds(forKey: String, completion: @escaping (Bool, [String]) -> Void) {
+        ref = Database.database().reference()
+        ref.child("Users/\(self.user.id)").child(forKey).observeSingleEvent(of: .value) { (Snapshot) in
+            if let snapDict = Snapshot.value as? NSDictionary {
+                let ids = snapDict.allKeys as! [String]
+                completion(true, ids)
+            } else {
+                completion(false, [])
+            }
+        }
+    }
+    
+//    func getFirebaseFriendIds(completion: @escaping (Bool, [String]) -> Void) {
+//        ref = Database.database().reference()
+//        ref.child("Users/\(self.userId)/Friends").observeSingleEvent(of: .value) { (squadIdSnapshot) in
+//            if let squadIdsDict = squadIdSnapshot.value as? NSDictionary {
+//                let squadIds = squadIdsDict.allKeys as! [String]
+//                completion(true, squadIds)
+//            } else {
+//                completion(false, [])
+//            }
+//        }
+//    }
+//
+//    func getFirebaseSquadIds(completion: @escaping (Bool, [String]) -> Void) {
+//        ref = Database.database().reference()
+//        ref.child("Users/\(self.userId)/Favorites").observeSingleEvent(of: .value) { (squadIdSnapshot) in
+//            if let squadIdsDict = squadIdSnapshot.value as? NSDictionary {
+//                let squadIds = squadIdsDict.allKeys as! [String]
+//                completion(true, squadIds)
+//            } else {
+//                completion(false, [])
+//            }
+//        }
+//    }
+    
+    
+    
+    func createSquadInFirebase(squadName: String, squadImageName: String, players: [Player]?) {
+        ref = Database.database().reference()
+        let squadRef = ref.child("Squads").childByAutoId()
+        squadRef.child("imageName").setValue(squadImageName)
+        squadRef.child("name").setValue(squadName)
+        
+        if let Players = players {
+            for player in Players {
+                squadRef.child("Players").child(player.id!).child("isReady").setValue(false)
+                squadRef.child("Players").child(player.id!).child("accepted").setValue(false)
+                
+            }
+        }
+        ref.child("Users/\(self.user.id)/Favorites").child(squadRef.key!).setValue(0)
+        
+        
+    }
+    
+    func sendSquadInvite(toId: String, squad: Squad) {
+        // Create Favorites for toId
+        let squadIdref = ref.child("Users\(toId)/Favorites").child(squad.id!)
+        squadIdref.child("imageName").setValue("person.3")
+        squadIdref.child("name").setValue(squad.name!)
+        
     }
     
     func getProfileForTitleView(completion: @escaping (Bool, String?, String?) -> Void) {
         ref = Database.database().reference()
-        ref.child("Users/\(self.userId)").observeSingleEvent(of: .value) { (DataSnapshot) in
+        ref.child("Users/\(self.user.id)").observeSingleEvent(of: .value) { (DataSnapshot) in
             if let DataDict = DataSnapshot.value as? NSDictionary {
                 // get name and imageName
                 let username = DataDict["username"] as! String
                 let imageName = DataDict["imageName"] as! String
-                self.username = username
-                self.imageName = imageName
+//                self.username = username
+//                self.imageName = imageName
                 completion(true, username, imageName)
             } else {
                 completion(false, nil, nil)
@@ -40,10 +202,10 @@ class FIRDatabaseManager {
         }
     }
     
-    func addObserverForOnlineFriends() {
-        ref = Database.database().reference()
-//        ref.child(<#T##pathString: String##String#>)
-    }
+//    func addObserverForOnlineFriends() {
+//        ref = Database.database().reference()
+////        ref.child(<#T##pathString: String##String#>)
+//    }
     
     
 //    func savePlayerDetails(playerId: String, CDM: CoreDataManager, completion: @escaping (Bool, Player?) -> Void) {
@@ -74,20 +236,20 @@ class FIRDatabaseManager {
     
     func acceptFriendRequest(from: searchResult) {
         // Add into Friends
-        ref.child("Users/\(self.userId)/Friends").child(from.id).child("name").setValue(from.name)
-        ref.child("Users/\(self.userId)/Friends").child(from.id).child("imageName").setValue(from.imageName)
-        ref.child("Users/\(self.userId)/Friends").child(from.id).child("isOnline").setValue(false)
-        ref.child("Users/\(self.userId)/Friends").child(from.id).child("isReady").setValue(false)
+        ref.child("Users/\(self.user.id)/Friends").child(from.id).child("name").setValue(from.name)
+        ref.child("Users/\(self.user.id)/Friends").child(from.id).child("imageName").setValue(from.imageName)
+        ref.child("Users/\(self.user.id)/Friends").child(from.id).child("isOnline").setValue(false)
+        ref.child("Users/\(self.user.id)/Friends").child(from.id).child("isReady").setValue(false)
         
-        ref.child("Users/\(from.id)/Friends").child(self.userId).child("name").setValue(self.username ?? "ERROR")
-        ref.child("Users/\(from.id)/Friends").child(self.userId).child("imageName").setValue(self.imageName ?? "person")
-        ref.child("Users/\(from.id)/Friends").child(self.userId).child("isOnline").setValue(false)
-        ref.child("Users/\(from.id)/Friends").child(self.userId).child("isReady").setValue(false)
+        ref.child("Users/\(from.id)/Friends").child(self.user.id).child("name").setValue(self.user.username)
+        ref.child("Users/\(from.id)/Friends").child(self.user.id).child("imageName").setValue(self.user.imageName)
+        ref.child("Users/\(from.id)/Friends").child(self.user.id).child("isOnline").setValue(false)
+        ref.child("Users/\(from.id)/Friends").child(self.user.id).child("isReady").setValue(false)
         
         
         // Remove the requests
-        ref.child("Users/\(from.id)/Invites/Sent").child(self.userId).removeValue()
-        ref.child("Users/\(self.userId)/Invites/Received").child(from.id).removeValue()
+        ref.child("Users/\(from.id)/Invites/Sent").child(self.user.id).removeValue()
+        ref.child("Users/\(self.user.id)/Invites/Received").child(from.id).removeValue()
         
         
         // create Player object for new friend
@@ -97,14 +259,14 @@ class FIRDatabaseManager {
     
     func removeFriendRequest(to uid: String) {
         ref = Database.database().reference()
-        ref.child("Users/\(uid)/Invites/Received/\(self.userId)").removeValue()
-        ref.child("Users/\(self.userId)/Invites/Sent/\(uid)").removeValue()
+        ref.child("Users/\(uid)/Invites/Received/\(self.user.id)").removeValue()
+        ref.child("Users/\(self.user.id)/Invites/Sent/\(uid)").removeValue()
     }
     
     func sendFriendRequest(to uid: String) {
         ref = Database.database().reference()
-        ref.child("Users/\(uid)/Invites/Received").child(self.userId).setValue(0)
-        ref.child("Users/\(self.userId)/Invites/Sent").child(uid).setValue(0)
+        ref.child("Users/\(uid)/Invites/Received").child(self.user.id).setValue(0)
+        ref.child("Users/\(self.user.id)/Invites/Sent").child(uid).setValue(0)
     }
     
     func searchUsersFor(username: String, completion: @escaping (Bool, [searchResult]?) -> Void) {
@@ -118,7 +280,7 @@ class FIRDatabaseManager {
                 
                 for id in allIds {
                     
-                    if id != self.userId {
+                    if id != self.user.id {
                         
                         print("***** \(String(describing: UsersDict[id])) ****")
 
@@ -134,14 +296,14 @@ class FIRDatabaseManager {
                         
                         var friendStatus = "Request"
                         
-                        if !self.checkDictForKey(dict: UserDict, key: "Friends", contains: self.userId) {
+                        if !self.checkDictForKey(dict: UserDict, key: "Friends", contains: self.user.id) {
                             // The two are not friends... Check the invites
                             print("THE TWO ARE NOT FRIENDS -> CHECK INVITES")
                             
                             
                             
                             if let userInvitesDict = UserDict["Invites"] as? NSDictionary {
-                                if self.checkDictForKey(dict: userInvitesDict, key: "Received", contains: self.userId) {
+                                if self.checkDictForKey(dict: userInvitesDict, key: "Received", contains: self.user.id) {
                                     // to search has received an invite from this user, status is pending
                                     print("SEARCHEE received invite -> PENDING")
                                     friendStatus = "Pending"
@@ -151,7 +313,7 @@ class FIRDatabaseManager {
                                 
                                 if friendStatus == "Pending" {
                                     print("IS PENDING -> CHECK IF THEIR SENT CONTAINS MY UID")
-                                    if self.checkDictForKey(dict: userInvitesDict, key: "Sent", contains: self.userId) {
+                                    if self.checkDictForKey(dict: userInvitesDict, key: "Sent", contains: self.user.id) {
                                         print("FRIENDS WE ARE")
                                         friendStatus = "Friends"
                                         print("THIS SHOULD TECHNICALLY NEVER PRINT")
@@ -159,7 +321,7 @@ class FIRDatabaseManager {
                                         print("NO SENT REQUESTS TO ME")
                                     }
                                 } else {
-                                    if self.checkDictForKey(dict: userInvitesDict, key: "Sent", contains: self.userId) {
+                                    if self.checkDictForKey(dict: userInvitesDict, key: "Sent", contains: self.user.id) {
                                         print("THEY SENT US A REQUEST")
                                         friendStatus = "Accept"
                                     }
@@ -229,8 +391,8 @@ class FIRDatabaseManager {
     
     func createNewSquad(squadName: String, squadImageName: String, squadPlayers: [Player]) {//, completion: (Bool) -> Void) {
         ref = Database.database().reference()
-        print("CREATING NEW SQUAD FOR USER-ID: \(self.userId)")
-        let newSquadRef = ref.child("Users/\(self.userId)/Favorites").childByAutoId()
+        print("CREATING NEW SQUAD FOR USER-ID: \(self.user.id)")
+        let newSquadRef = ref.child("Users/\(self.user.id)/Favorites").childByAutoId()
 
         newSquadRef.child("name").setValue(squadName)
         newSquadRef.child("imageName").setValue(squadImageName)
@@ -260,7 +422,7 @@ class FIRDatabaseManager {
     func loadPlayerRegiments(CDM: CoreDataManager, completion: @escaping (Bool, [Regiment]) -> Void) {
         
         ref = Database.database().reference()
-        ref.child("Users/\(self.userId)/Regiments").observeSingleEvent(of: .value) { (regimentsSnapshot) in
+        ref.child("Users/\(self.user.id)/Regiments").observeSingleEvent(of: .value) { (regimentsSnapshot) in
             if let regimentDict = regimentsSnapshot.value as? NSDictionary {
                 let allRegimentIds = regimentDict.allKeys as! [String]
                 var regiments: [Regiment] = []
@@ -303,7 +465,7 @@ class FIRDatabaseManager {
     
     func loadPlayerSquads(CDM: CoreDataManager, completion: @escaping (Bool, [Squad]) -> Void) {
         ref = Database.database().reference()
-        ref.child("Users/\(self.userId)/Favorites").observeSingleEvent(of: .value) { (squadsSnapshot) in
+        ref.child("Users/\(self.user.id)/Favorites").observeSingleEvent(of: .value) { (squadsSnapshot) in
             if let squadsDict = squadsSnapshot.value as? NSDictionary {
                 let allSquadIds = squadsDict.allKeys as! [String]
                 var squads: [Squad] = []
@@ -346,7 +508,7 @@ class FIRDatabaseManager {
     // load player Friends for user from Firebase
     func loadPlayerFriendIds(CDM: CoreDataManager, completion: @escaping (Bool, [Player]) -> Void) {
         ref = Database.database().reference()
-        ref.child("Users/\(self.userId)/Friends").observeSingleEvent(of: .value) { (friendsSnapshot) in
+        ref.child("Users/\(self.user.id)/Friends").observeSingleEvent(of: .value) { (friendsSnapshot) in
             if let friendsDict = friendsSnapshot.value as? NSDictionary {
                 
                 print("Loading Player Friends")
@@ -458,7 +620,7 @@ class FIRDatabaseManager {
     }
     
     
-    func savePlayerFriendFromFirebase(uid: String, context: NSManagedObjectContext, completion: @escaping (Bool) -> Void) {
+    func savePlayerFriendFromFirebase(uid: String, context: NSManagedObjectContext, completion: @escaping (Bool, Player?) -> Void) {
         ref = Database.database().reference()
         ref.child("Users/\(uid)").observeSingleEvent(of: .value) { (PlayerSnapshot) in
             if let PlayerDict = PlayerSnapshot.value as? NSDictionary {
@@ -474,14 +636,14 @@ class FIRDatabaseManager {
                 
                 do {
                     try context.save()
-                    completion(true)
+                    completion(true, player)
                 } catch let err {
                     print("Error saving new player in coreData: \(err)")
-                    completion(false)
+                    completion(false, nil)
                 }
                 
             } else {
-                completion(false)
+                completion(false, nil)
             }
         }
     }
@@ -489,7 +651,7 @@ class FIRDatabaseManager {
     
     func observeForInvites(completion: (Bool) -> Void) {
         ref = Database.database().reference()
-        ref.child("Users/\(self.userId)/Invites").observe(.childAdded) { (InviteSnapshot) in
+        ref.child("Users/\(self.user.id)/Invites").observe(.childAdded) { (InviteSnapshot) in
             if let InviteDict = InviteSnapshot.value as? NSDictionary {
                 print(InviteDict)
             }

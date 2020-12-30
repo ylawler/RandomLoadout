@@ -159,7 +159,9 @@ class AddNewSquadViewController: UIViewController, UICollectionViewDelegate, UIC
             guard let FirebaseDatabaseManager = self.FDM else { return }
             
             //  Create Squad in core data and add to firebase
-            FirebaseDatabaseManager.createNewSquad(squadName: self.addNameTextField.text!, squadImageName: squadImageName, squadPlayers: self.selectedFriends)
+            FirebaseDatabaseManager.createSquadInFirebase(squadName: self.addNameTextField.text!, squadImageName: squadImageName, players: self.selectedFriends)
+            
+//            FirebaseDatabaseManager.createNewSquad(squadName: self.addNameTextField.text!, squadImageName: squadImageName, squadPlayers: self.selectedFriends)
 
             
             self.navigationController?.popToRootViewController(animated: true)

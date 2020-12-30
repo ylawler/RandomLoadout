@@ -566,7 +566,11 @@
                         <viewLayoutGuide key="safeArea" id="lyn-u3-ZDX"/>
                     </view>
                     <navigationItem key="navigationItem" id="c3L-T5-haR">
-                        <barButtonItem key="rightBarButtonItem" image="plus" catalog="system" id="s71-L7-UrQ"/>
+                        <barButtonItem key="rightBarButtonItem" image="plus" catalog="system" id="s71-L7-UrQ">
+                            <connections>
+                                <action selector="inviteTapped:" destination="mgM-Vh-WSW" id="Dca-lX-Z72"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="gamersCollectionView" destination="BpB-ft-4a4" id="PKt-oI-hvs"/>

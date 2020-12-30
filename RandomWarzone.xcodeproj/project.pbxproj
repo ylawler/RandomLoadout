@@ -32,6 +32,7 @@
 		AC522674253EE36700E6B0C0 /* Weapons.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC522673253EE36700E6B0C0 /* Weapons.swift */; };
 		AC595773253329C300C3D395 /* Loadout.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC595772253329C300C3D395 /* Loadout.swift */; };
 		AC7E4DA52549D8FA00BA65F4 /* AttachmentsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7E4DA42549D8FA00BA65F4 /* AttachmentsCollectionViewController.swift */; };
+		AC8572292556F54E00983EA8 /* AppManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8572282556F54E00983EA8 /* AppManager.swift */; };
 		AC8B02D4253DB03100CCDEA4 /* PlayerSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8B02D3253DB03100CCDEA4 /* PlayerSelectionViewController.swift */; };
 		AC8B02D7253DB12600CCDEA4 /* PlayerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8B02D5253DB12600CCDEA4 /* PlayerCollectionViewCell.swift */; };
 		AC8B02D8253DB12600CCDEA4 /* PlayerCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC8B02D6253DB12600CCDEA4 /* PlayerCollectionViewCell.xib */; };
@@ -120,6 +121,7 @@
 		AC522673253EE36700E6B0C0 /* Weapons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weapons.swift; sourceTree = "<group>"; };
 		AC595772253329C300C3D395 /* Loadout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loadout.swift; sourceTree = "<group>"; };
 		AC7E4DA42549D8FA00BA65F4 /* AttachmentsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttachmentsCollectionViewController.swift; sourceTree = "<group>"; };
+		AC8572282556F54E00983EA8 /* AppManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppManager.swift; sourceTree = "<group>"; };
 		AC8B02D3253DB03100CCDEA4 /* PlayerSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerSelectionViewController.swift; sourceTree = "<group>"; };
 		AC8B02D5253DB12600CCDEA4 /* PlayerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerCollectionViewCell.swift; sourceTree = "<group>"; };
 		AC8B02D6253DB12600CCDEA4 /* PlayerCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlayerCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -294,6 +296,7 @@
 		AC52266F253EC7CE00E6B0C0 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				AC8572252555BA7F00983EA8 /* v2 */,
 				ACAF81292545E648007398A6 /* FIRAuthenticationManager */,
 				ACEF43EC254477EA007DA46B /* CoreDataManagers */,
 				ACE404ED2540A27300CB5F20 /* FIRDatabase */,
@@ -317,6 +320,22 @@
 				AC595772253329C300C3D395 /* Loadout.swift */,
 			);
 			path = Loadout;
+			sourceTree = "<group>";
+		};
+		AC8572252555BA7F00983EA8 /* v2 */ = {
+			isa = PBXGroup;
+			children = (
+				AC8572272555BB0A00983EA8 /* AppManager */,
+			);
+			path = v2;
+			sourceTree = "<group>";
+		};
+		AC8572272555BB0A00983EA8 /* AppManager */ = {
+			isa = PBXGroup;
+			children = (
+				AC8572282556F54E00983EA8 /* AppManager.swift */,
+			);
+			path = AppManager;
 			sourceTree = "<group>";
 		};
 		AC8B02D9253DB1C000CCDEA4 /* Player */ = {
@@ -766,6 +785,7 @@
 				ACE404E1254074D100CB5F20 /* PlayerCollectionReusableView.swift in Sources */,
 				ACAE43A42546EAC100EBBF72 /* friendsCollectionViewCell.swift in Sources */,
 				ACA410C4253208AA00D0A7FC /* Perks.swift in Sources */,
+				AC8572292556F54E00983EA8 /* AppManager.swift in Sources */,
 				ACAF812325459E5C007398A6 /* LoginCollectionViewCell.swift in Sources */,
 				ACA410D02532090600D0A7FC /* Melees.swift in Sources */,
 				ACAE439C2546E8E300EBBF72 /* AddNewSquadViewController.swift in Sources */,
@@ -936,6 +956,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2C676ZXQLR;
 				INFOPLIST_FILE = RandomWarzone/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -955,6 +976,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2C676ZXQLR;
 				INFOPLIST_FILE = RandomWarzone/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

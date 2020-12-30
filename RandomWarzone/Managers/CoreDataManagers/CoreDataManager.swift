@@ -12,16 +12,43 @@ import CoreData
 class CoreDataManager {
     
     var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    
-    
-    func savePlayer() {
-        
-    }
-    
-    func saveNewSquad(squadName: String, squadImage: UIImage, squadPlayers: [Player], completion: (Bool) -> Void) {
-        
-        
-        
+  
+    func save(entityName: String, structData: StructData) {
+        if !self.checkIfExists(id: structData.id, entityName: entityName) {
+            if entityName == "Squad" {
+                let entity = Squad(context: self.context)
+                entity.id = structData.id
+                entity.img = UIImage(systemName: structData.imageName)?.pngData()!
+                entity.name = structData.name
+                for player in structData.players {
+                    if self.checkIfExists(id: player.key, entityName: "Player") {
+                        // append that player to playersArray
+                        if let playerCoreData = self.getPlayerFromId(id: player.key) {
+                            entity.addToPlayers(playerCoreData)
+                        }
+                    }
+                }
+            } else if entityName == "Regiment" {
+                let entity = Regiment(context: self.context)
+                entity.id = structData.id
+                entity.img = UIImage(systemName: structData.imageName)?.pngData()!
+                entity.name = structData.name
+                for player in structData.players {
+                    if self.checkIfExists(id: player.key, entityName: "Player") {
+                        // append that player to playersArray
+                        if let playerCoreData = self.getPlayerFromId(id: player.key) {
+                            entity.addToPlayers(playerCoreData)
+                        }
+                    }
+                }
+            }
+            do {
+                try self.context.save()
+                
+            } catch let err {
+                print("Error saving new squad: \(err)")
+            }
+        }
     }
     
     func getPlayerFromId(id: String) -> Player? {

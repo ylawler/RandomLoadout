@@ -45,6 +45,10 @@ class GamerCollectionViewCell: UICollectionViewCell {
 //        
 //    }
     
+    func configurePlayer(player: Player) {
+        self.gamerImageView.image = UIImage(data: player.img!)
+    }
+    
     func updateImageView(isOnline: Bool) {
         if isOnline {
             self.gamerImageView.tintColor = UIColor.green

@@ -40,7 +40,7 @@ class LoginViewController: UIViewController, UICollectionViewDelegate, UICollect
                 // successful sign in
                 
                 if let presenter = self.presentingViewController as? PlayerSelectionViewController {
-                    presenter.FDM = FIRDatabaseManager(uid: user!.uid)
+//                    presenter.FDM = FIRDatabaseManager(user: user!)
                 }
                 
                 self.dismiss(animated: true) {
@@ -51,7 +51,7 @@ class LoginViewController: UIViewController, UICollectionViewDelegate, UICollect
     }
     
     func signUpUser(email: String, username: String, password: String) {
-        FIRAuthManager.shared.signUpUser(with: email, username: username, password: password) { (successful, FDBM) in
+        FIRAuthManager.shared.signUpUser(with: email, username: username, password: password) { (successful, appManager) in
             if successful {
                 /*
                  We have a successful login
@@ -62,8 +62,10 @@ class LoginViewController: UIViewController, UICollectionViewDelegate, UICollect
                  
                  */
                 
+                
+                
                 if let presenter = self.presentingViewController as? PlayerSelectionViewController {
-                    presenter.FDM = FDBM!
+                    presenter.appManager = appManager
                 }
                 
                 self.dismiss(animated: true) {
