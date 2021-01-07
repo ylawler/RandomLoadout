@@ -61,7 +61,7 @@ class PlayerSelectionViewController: UIViewController, UICollectionViewDelegate,
         
         if let AM = self.appManager {
             // we have an appManager
-            print("WE HAVE AN APP MANAGER \(AM.user!.username)")
+            print("WE HAVE AN APP MANAGER")
         }
         
         
